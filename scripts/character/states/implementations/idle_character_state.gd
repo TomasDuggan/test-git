@@ -4,7 +4,7 @@ class_name IdleCharacterState
 
 func enter() -> void:
 	character.stop_movement()
-	character.animation.play_idle()
+	character.animation.play_action(CharacterAnimation.Action.IDLE)
 
 func process_frame(_delta: float) -> void:
 	pass

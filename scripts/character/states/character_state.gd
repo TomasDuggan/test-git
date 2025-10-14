@@ -2,6 +2,9 @@
 extends Node
 class_name CharacterState
 
+@warning_ignore("unused_signal")
+signal request_state_change(new_state: StateController.StateType)
+
 var character: Character
 
 

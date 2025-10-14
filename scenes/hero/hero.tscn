@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgufkt2ps6d1u"]
+[gd_scene load_steps=6 format=3 uid="uid://bgufkt2ps6d1u"]
 
 [ext_resource type="Script" uid="uid://b8e81ybu30jv1" path="res://scripts/character/character.gd" id="1_3pgml"]
-[ext_resource type="SpriteFrames" uid="uid://dw8esppijksgi" path="res://animations/hero_animation.tres" id="1_4rdp7"]
-[ext_resource type="Script" uid="uid://epp8fpwhqk7h" path="res://scripts/character/character_animation.gd" id="3_3pgml"]
+[ext_resource type="SpriteFrames" uid="uid://dw8esppijksgi" path="res://animations/hero/hero_animation.tres" id="1_4rdp7"]
+[ext_resource type="Resource" uid="uid://bh7ytkqbkdw06" path="res://configs/character/hero_character_config.tres" id="2_tqfqc"]
+[ext_resource type="Script" uid="uid://epp8fpwhqk7h" path="res://scripts/character/components/character_animation.gd" id="3_3pgml"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jx46w"]
 radius = 4.0
 height = 14.0
 
-[node name="Hero" type="CharacterBody2D"]
+[node name="Hero" type="CharacterBody2D" groups=["Hero"]]
 scale = Vector2(3, 3)
 motion_mode = 1
 script = ExtResource("1_3pgml")
+_config = ExtResource("2_tqfqc")
 
 [node name="Animation" type="AnimatedSprite2D" parent="."]
 sprite_frames = ExtResource("1_4rdp7")

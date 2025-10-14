@@ -10,6 +10,8 @@ static func build_new_state(new_state: StateController.StateType) -> CharacterSt
 			return MoveCharacterState.new()
 		StateController.StateType.PARRY:
 			return ParryCharacterState.new()
+		StateController.StateType.ATTACK:
+			return AttackCharacterState.new()
 		_:
 			push_error("Should be unreachable!!!")
 			return null

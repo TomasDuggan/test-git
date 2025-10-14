@@ -6,11 +6,11 @@ func enter() -> void:
 	pass
 
 func process_frame(_delta: float) -> void:
-	character.animation.play_move()
+	character.animation.play_action(CharacterAnimation.Action.MOVE)
 	character.move()
 
 func exit() -> void:
-	character.stop_movement()
+	request_state_change.emit(StateController.StateType.IDLE)
 
 func can_exit_to(_state: StateController.StateType) -> bool:
 	return true

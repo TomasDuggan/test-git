@@ -1,5 +1,5 @@
-extends CharacterMovementResolver
-class_name HeroMovementResolver
+extends CharacterMovementTrigger
+class_name HeroMovementTrigger
 
 
 func calculate_movement_direction() -> Vector2:

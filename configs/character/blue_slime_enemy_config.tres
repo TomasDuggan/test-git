@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=3 format=3 uid="uid://cdlln0h8axv3"]
+
+[ext_resource type="Script" uid="uid://c34uoge0timhq" path="res://configs/character/character_config.gd" id="1_h0sov"]
+[ext_resource type="Script" uid="uid://bqqny8yf1n5r6" path="res://scripts/character/triggers/movement/melee_enemy_movement_trigger.gd" id="2_qvn0a"]
+
+[resource]
+script = ExtResource("1_h0sov")
+hp = 25
+move_speed = 50.0
+triggers = Array[Script]([ExtResource("2_qvn0a")])
+metadata/_custom_type_script = "uid://c34uoge0timhq"
