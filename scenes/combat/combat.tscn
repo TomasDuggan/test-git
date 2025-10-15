@@ -1,0 +1,115 @@
+[gd_scene load_steps=12 format=3 uid="uid://kviba886ut6t"]
+
+[ext_resource type="Script" uid="uid://ct3iq4lp3e4vo" path="res://scripts/combat/combat.gd" id="1_5vqsm"]
+[ext_resource type="PackedScene" uid="uid://bul2u0tjanic8" path="res://scenes/character/character.tscn" id="2_6aonj"]
+[ext_resource type="Script" uid="uid://c7ow8g36o46ku" path="res://scripts/combat/managers/character_selection_manager.gd" id="2_uakg0"]
+[ext_resource type="Script" uid="uid://dxqjqdqqsn6kh" path="res://scripts/combat/managers/combat_manager.gd" id="3_8cw2p"]
+[ext_resource type="Resource" uid="uid://b3a5e33ydueoi" path="res://configs/character/heroes/warrior_config.tres" id="3_ltalu"]
+[ext_resource type="Resource" uid="uid://1rsqk4e052kl" path="res://configs/character/enemies/test_enemy_character_config.tres" id="3_pqpfu"]
+[ext_resource type="Script" uid="uid://bn4hf1hsjuk35" path="res://scripts/combat/managers/turn_manager.gd" id="4_4a6i5"]
+[ext_resource type="Script" uid="uid://bbjbgjlir05uj" path="res://scripts/combat/ui/skills_container_ui.gd" id="5_4voa6"]
+[ext_resource type="Texture2D" uid="uid://co8a1556ekfpw" path="res://art/backgrounds/tile_0001.png" id="5_jgg25"]
+[ext_resource type="PackedScene" uid="uid://prlfdpqd0u28" path="res://scenes/combat/ui/skill_ui.tscn" id="7_ijgaf"]
+[ext_resource type="Script" uid="uid://2opohag5bnan" path="res://scripts/combat/ui/roll_button_ui.gd" id="11_3dmww"]
+
+[node name="Combat" type="Node2D"]
+script = ExtResource("1_5vqsm")
+
+[node name="Managers" type="Node" parent="."]
+
+[node name="CharacterSelectionManager" type="Node2D" parent="Managers"]
+script = ExtResource("2_uakg0")
+
+[node name="CombatManager" type="Node" parent="Managers"]
+script = ExtResource("3_8cw2p")
+
+[node name="TurnManager" type="Node" parent="Managers"]
+script = ExtResource("4_4a6i5")
+
+[node name="Warrior" parent="." instance=ExtResource("2_6aonj")]
+position = Vector2(191, 347)
+_config = ExtResource("3_ltalu")
+
+[node name="Enemy" parent="." instance=ExtResource("2_6aonj")]
+position = Vector2(879, 347)
+_config = ExtResource("3_pqpfu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Skills" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -98.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Background" type="NinePatchRect" parent="CanvasLayer/Skills"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jgg25")
+patch_margin_left = 8
+patch_margin_top = 9
+patch_margin_right = 9
+patch_margin_bottom = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/Skills"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Actions" type="HBoxContainer" parent="CanvasLayer/Skills/MarginContainer"]
+layout_mode = 2
+
+[node name="SkillsContainer" type="HBoxContainer" parent="CanvasLayer/Skills/MarginContainer/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 8.0
+alignment = 1
+script = ExtResource("5_4voa6")
+
+[node name="SkillUI" parent="CanvasLayer/Skills/MarginContainer/Actions/SkillsContainer" instance=ExtResource("7_ijgaf")]
+layout_mode = 2
+
+[node name="SkillUI2" parent="CanvasLayer/Skills/MarginContainer/Actions/SkillsContainer" instance=ExtResource("7_ijgaf")]
+layout_mode = 2
+
+[node name="SkillUI3" parent="CanvasLayer/Skills/MarginContainer/Actions/SkillsContainer" instance=ExtResource("7_ijgaf")]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Skills/MarginContainer/Actions"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="RollButton" type="Button" parent="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Roll"
+script = ExtResource("11_3dmww")
+
+[node name="EndTurnButton" type="Button" parent="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "End Turn"
+
+[connection signal="pressed" from="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/RollButton" to="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/RollButton" method="_on_pressed"]
+
+[editable path="CanvasLayer/Skills/MarginContainer/Actions/SkillsContainer/SkillUI"]
+[editable path="CanvasLayer/Skills/MarginContainer/Actions/SkillsContainer/SkillUI2"]
+[editable path="CanvasLayer/Skills/MarginContainer/Actions/SkillsContainer/SkillUI3"]
