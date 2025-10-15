@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://prlfdpqd0u28"]
+[gd_scene load_steps=5 format=3 uid="uid://prlfdpqd0u28"]
 
 [ext_resource type="Script" uid="uid://b5y74irwsnug7" path="res://scripts/combat/ui/skill_ui.gd" id="1_f0hv4"]
 [ext_resource type="Texture2D" uid="uid://dxdwp3pkwvc14" path="res://icon.svg" id="2_0me1v"]
+[ext_resource type="Script" uid="uid://den54mwyhhrer" path="res://scripts/combat/ui/skill_description_modal_ui.gd" id="3_1oqei"]
+[ext_resource type="Texture2D" uid="uid://d2fguhq5ar1yu" path="res://art/backgrounds/tile_0003.png" id="3_4kmby"]
 
-[node name="SkillUI" type="Control" node_paths=PackedStringArray("_icon")]
+[node name="SkillUI" type="Control" node_paths=PackedStringArray("_icon", "_description_modal")]
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 3
 anchors_preset = 8
@@ -19,6 +21,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f0hv4")
 _icon = NodePath("Icon")
+_description_modal = NodePath("DescriptionModal")
 
 [node name="Icon" type="TextureRect" parent="."]
 layout_mode = 1
@@ -30,7 +33,7 @@ grow_vertical = 2
 texture = ExtResource("2_0me1v")
 expand_mode = 2
 
-[node name="ActivateButton" type="Button" parent="."]
+[node name="SelectButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -38,4 +41,59 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[connection signal="pressed" from="ActivateButton" to="." method="_on_activate_button_pressed"]
+[node name="DescriptionModal" type="Control" parent="." node_paths=PackedStringArray("_title", "_desc")]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -100.0
+offset_top = -250.0
+offset_right = 100.0
+offset_bottom = -50.0
+grow_horizontal = 2
+script = ExtResource("3_1oqei")
+_title = NodePath("MarginContainer/HBoxContainer/Title")
+_desc = NodePath("MarginContainer/HBoxContainer/Desc")
+
+[node name="Background" type="NinePatchRect" parent="DescriptionModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_4kmby")
+patch_margin_left = 10
+patch_margin_top = 11
+patch_margin_right = 7
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="DescriptionModal"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="VBoxContainer" parent="DescriptionModal/MarginContainer"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="DescriptionModal/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "Title"
+
+[node name="Desc" type="Label" parent="DescriptionModal/MarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 0
+text = "DEscription asd asd ag adgksdjgksdg as fdkagfds"
+autowrap_mode = 3
+
+[connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]

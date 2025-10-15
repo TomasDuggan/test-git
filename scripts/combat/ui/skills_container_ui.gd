@@ -19,8 +19,8 @@ func _on_turn_started(character: Character) -> void:
 func _add_skills(skill_configs: Array[SkillConfig]) -> void:
 	for skill_config: SkillConfig in skill_configs:
 		var skill_ui_instance: SkillUI = SKILL_UI_SCENE.instantiate()
-		add_child(skill_ui_instance)
 		skill_ui_instance.initialize(skill_config)
+		add_child(skill_ui_instance)
 
 func _exit_tree():
 	CombatEventBus.turn_started.disconnect(_on_turn_started)

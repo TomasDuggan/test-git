@@ -9,6 +9,7 @@ class_name SkillConfig
 @export_category("Logic")
 @export var amount_of_dice: int
 @export var die_size: int
+@export var effect_configs: Array[SkillEffectConfig]
 @export var affects_enemies: bool
 @export var amount_of_targets: int
 @export var thresholds: Dictionary[RollInterpreterSystem.RollOutcomeType, int] = {

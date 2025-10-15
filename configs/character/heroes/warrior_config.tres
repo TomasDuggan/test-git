@@ -1,8 +1,15 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=5 format=3 uid="uid://b3a5e33ydueoi"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=8 format=3 uid="uid://b3a5e33ydueoi"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_pb1tx"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_dxfos"]
 [ext_resource type="Texture2D" uid="uid://dw2lfl3bb7h6m" path="res://art/skills/fc4.png" id="3_3hnm4"]
+[ext_resource type="Script" uid="uid://bto7l8ty1bdpr" path="res://configs/skill/effects/skill_effect_config.gd" id="3_n32pi"]
+[ext_resource type="Script" uid="uid://chu3wno85ljhm" path="res://configs/skill/effects/damage_skill_effect_config.gd" id="3_vm5ln"]
+
+[sub_resource type="Resource" id="Resource_cr348"]
+script = ExtResource("3_vm5ln")
+damage = 15
+metadata/_custom_type_script = "uid://chu3wno85ljhm"
 
 [sub_resource type="Resource" id="Resource_70ky5"]
 script = ExtResource("2_dxfos")
@@ -11,6 +18,7 @@ desc = "Hits single enemy"
 icon = ExtResource("3_3hnm4")
 amount_of_dice = 2
 die_size = 8
+effect_configs = Array[ExtResource("3_n32pi")]([SubResource("Resource_cr348")])
 affects_enemies = true
 amount_of_targets = 1
 thresholds = Dictionary[int, int]({
