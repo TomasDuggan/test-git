@@ -7,3 +7,4 @@ class_name CharacterConfig
 @export var magic_resistance: int
 @export var speed: int
 @export var skill_configs: Array[SkillConfig]
+@export var stats: StatsConfig

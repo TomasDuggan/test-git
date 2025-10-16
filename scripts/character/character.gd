@@ -5,6 +5,7 @@ class_name Character
 @export var _config: CharacterConfig
 @onready var hp: CharacterHP = $HP # Facade
 
+var stats: CharacterStats # Facade
 
 
 func _gui_input(event: InputEvent):
@@ -14,6 +15,7 @@ func _gui_input(event: InputEvent):
 
 func _ready():
 	hp.initialize(_config.hp)
+	stats = CharacterStats.new(_config.stats)
 
 func start_turn() -> void:
 	pass

@@ -1,8 +1,13 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=5 format=3 uid="uid://1rsqk4e052kl"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=11 format=3 uid="uid://1rsqk4e052kl"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_8c44a"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_np4wf"]
 [ext_resource type="Script" uid="uid://bto7l8ty1bdpr" path="res://configs/skill/effects/skill_effect_config.gd" id="3_np4wf"]
+[ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="4_fhxvt"]
+[ext_resource type="Resource" uid="uid://s52ip5rmkm8g" path="res://configs/stats/instances/STR_stat_config.tres" id="5_e88yr"]
+[ext_resource type="Resource" uid="uid://pdqtg5p4bpst" path="res://configs/stats/instances/INT_stat_config.tres" id="6_g1s1k"]
+[ext_resource type="Resource" uid="uid://g5su7bnt8cv" path="res://configs/stats/instances/DEX_stat_config.tres" id="7_6ddos"]
+[ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="8_s4hsu"]
 
 [sub_resource type="Resource" id="Resource_8c44a"]
 script = ExtResource("2_np4wf")
@@ -12,9 +17,20 @@ amount_of_dice = 1
 die_size = 4
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
+[sub_resource type="Resource" id="Resource_npyhs"]
+script = ExtResource("8_s4hsu")
+all_stats = Dictionary[ExtResource("4_fhxvt"), int]({
+ExtResource("5_e88yr"): 3,
+ExtResource("6_g1s1k"): 4,
+ExtResource("7_6ddos"): 10
+})
+main_stat = ExtResource("7_6ddos")
+metadata/_custom_type_script = "uid://uve6uqxfi242"
+
 [resource]
 script = ExtResource("1_8c44a")
 display_name = "Enemy 1"
 hp = 50
 skill_configs = Array[ExtResource("2_np4wf")]([SubResource("Resource_8c44a")])
+stats = SubResource("Resource_npyhs")
 metadata/_custom_type_script = "uid://by3x5xev328bq"

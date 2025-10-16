@@ -1,10 +1,15 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=8 format=3 uid="uid://b3a5e33ydueoi"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=14 format=3 uid="uid://b3a5e33ydueoi"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_pb1tx"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_dxfos"]
 [ext_resource type="Texture2D" uid="uid://dw2lfl3bb7h6m" path="res://art/skills/fc4.png" id="3_3hnm4"]
 [ext_resource type="Script" uid="uid://bto7l8ty1bdpr" path="res://configs/skill/effects/skill_effect_config.gd" id="3_n32pi"]
 [ext_resource type="Script" uid="uid://chu3wno85ljhm" path="res://configs/skill/effects/damage_skill_effect_config.gd" id="3_vm5ln"]
+[ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="6_xb0hq"]
+[ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="7_aw5nf"]
+[ext_resource type="Resource" uid="uid://s52ip5rmkm8g" path="res://configs/stats/instances/STR_stat_config.tres" id="8_ea4sj"]
+[ext_resource type="Resource" uid="uid://pdqtg5p4bpst" path="res://configs/stats/instances/INT_stat_config.tres" id="9_n8yre"]
+[ext_resource type="Resource" uid="uid://g5su7bnt8cv" path="res://configs/stats/instances/DEX_stat_config.tres" id="10_4lyg4"]
 
 [sub_resource type="Resource" id="Resource_cr348"]
 script = ExtResource("3_vm5ln")
@@ -27,9 +32,20 @@ thresholds = Dictionary[int, int]({
 })
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
+[sub_resource type="Resource" id="Resource_u8ghw"]
+script = ExtResource("6_xb0hq")
+all_stats = Dictionary[ExtResource("7_aw5nf"), int]({
+ExtResource("8_ea4sj"): 10,
+ExtResource("9_n8yre"): 3,
+ExtResource("10_4lyg4"): 4
+})
+main_stat = ExtResource("8_ea4sj")
+metadata/_custom_type_script = "uid://uve6uqxfi242"
+
 [resource]
 script = ExtResource("1_pb1tx")
 display_name = "Warrior"
 hp = 100
 skill_configs = Array[ExtResource("2_dxfos")]([SubResource("Resource_70ky5")])
+stats = SubResource("Resource_u8ghw")
 metadata/_custom_type_script = "uid://by3x5xev328bq"

@@ -9,7 +9,6 @@ var dice_result: DiceResult
 var outcome_type: RollInterpreterSystem.RollOutcomeType
 
 
-
 func _init(caster_arg: Character, targets_arg: Array[Character], skill_arg: SkillConfig) -> void:
 	caster = caster_arg
 	targets = targets_arg
@@ -25,7 +24,6 @@ func print_roll() -> void:
 	var targets_info := "Targets: [color='red']%s[/color]" % [str(targets.map(func(t: Character): return t._config.display_name))]
 	
 	print(" ------------------- ROLL LANZADO ------------------- ")
-	
 	print_rich(
 		caster_info + "\n" +
 		skill_info + "\n" +
@@ -35,5 +33,4 @@ func print_roll() -> void:
 		outcome_info + "\n" +
 		targets_info
 	)
-	
 	print(" ------------------- /ROLL LANZADO ------------------- ")

@@ -1,4 +1,7 @@
 extends Node
+"""
+Bus para la escena de Combate
+"""
 
 signal combat_started(characters: Array[Character])
 signal turn_started(character: Character)
