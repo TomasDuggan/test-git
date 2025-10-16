@@ -1,13 +1,13 @@
 extends SkillEffectHandler
 class_name DamageSkillEffectHandler
 
-
 const PARTIAL_DAMAGE_REDUCTION := 0.5 # TODO: esto y fail podrian ir en DamageSkillEffectConfig
+
 
 func handle(config: SkillEffectConfig, roll: RollResult, context: SkillExecutionContext) -> void:
 	var dmg_config := config as DamageSkillEffectConfig
 	
-	var damage_scaled_by_stat: int = roll.caster.stats.scale_effect_by_stat_value(dmg_config.damage, config)
+	var damage_scaled_by_stat: int = roll.caster.stats.scale_effect_by_stat(dmg_config.damage, config)
 	var final_damage: int = _scale_by_roll_outcome(roll.outcome_type, damage_scaled_by_stat)
 	
 	for target: Character in roll.targets:

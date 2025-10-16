@@ -6,6 +6,7 @@ class_name CharacterHP
 
 signal died()
 signal damage_received()
+signal healed()
 
 var _max_hp: int
 var _current_hp: int
@@ -28,6 +29,10 @@ func receive_damage(damage: int) -> void:
 		damage_received.emit()
 	
 	_update_hp_bar()
+
+func heal(heal_amount: int) -> void:
+	_current_hp = min(_current_hp + heal_amount, _max_hp)
+	healed.emit()
 
 func _update_hp_bar()  -> void:
 	var tween: Tween = create_tween()

@@ -24,13 +24,12 @@ ExtResource("5_e88yr"): 3,
 ExtResource("6_g1s1k"): 4,
 ExtResource("7_6ddos"): 10
 })
-main_stat = ExtResource("7_6ddos")
 metadata/_custom_type_script = "uid://uve6uqxfi242"
 
 [resource]
 script = ExtResource("1_8c44a")
 display_name = "Enemy 1"
 hp = 50
-skill_configs = Array[ExtResource("2_np4wf")]([SubResource("Resource_8c44a")])
 stats = SubResource("Resource_npyhs")
+skill_configs = Array[ExtResource("2_np4wf")]([SubResource("Resource_8c44a")])
 metadata/_custom_type_script = "uid://by3x5xev328bq"

@@ -9,9 +9,12 @@ func _init(stats: StatsConfig) -> void:
 		var stat_value := StatValue.new(stat_config, stats.all_stats[stat_config])
 		_all_stats.append(stat_value)
 
-func scale_effect_by_stat_value(base: Variant, effect_config: SkillEffectConfig) -> Variant:
-	var stat_amount: int = _get_stat(effect_config.scaling_stat).amount
+func scale_effect_by_stat(base: Variant, effect_config: SkillEffectConfig) -> Variant:
+	var stat_amount: int = get_stat_amount(effect_config.scaling_stat)
 	return base + stat_amount * effect_config.stat_scaling_multiplier
+
+func get_stat_amount(stat_config: StatConfig) -> int:
+	return _get_stat(stat_config).amount
 
 func _get_stat(stat_config: StatConfig) -> StatValue:
 	for stat: StatValue in _all_stats:
