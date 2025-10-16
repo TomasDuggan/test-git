@@ -38,6 +38,7 @@ func _execute_skill() -> void:
 	var roll_result := RollResult.new(_current_character, _current_targets, _current_skill)
 	roll_result.dice_result = DiceSystem.roll(_current_skill, _current_character)
 	roll_result.outcome_type = RollInterpreterSystem.resolve_outcome(_current_skill, roll_result.dice_result.total)
+	roll_result.print_roll() # TODO: es debug
 	SkillExecutionSystem.excecute_skill(_current_skill, roll_result)
 
 func _exit_tree():

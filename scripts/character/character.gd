@@ -1,15 +1,19 @@
-extends Node2D
+extends Control
 class_name Character
 
 
 @export var _config: CharacterConfig
-@onready var selection_area = $SelectionArea
+@onready var hp: CharacterHP = $HP # Facade
 
 
-var _hp: int
+
+func _gui_input(event: InputEvent):
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
+			CombatEventBus.raise_event_character_selected(self)
 
 func _ready():
-	_hp = _config.hp
+	hp.initialize(_config.hp)
 
 func start_turn() -> void:
 	pass

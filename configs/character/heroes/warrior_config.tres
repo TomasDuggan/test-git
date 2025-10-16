@@ -29,6 +29,7 @@ metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
 [resource]
 script = ExtResource("1_pb1tx")
+display_name = "Warrior"
 hp = 100
 skill_configs = Array[ExtResource("2_dxfos")]([SubResource("Resource_70ky5")])
 metadata/_custom_type_script = "uid://by3x5xev328bq"
