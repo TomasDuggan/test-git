@@ -11,4 +11,3 @@ const DEX_STAT_CONFIG: StatConfig = preload("uid://g5su7bnt8cv")
 	INT_STAT_CONFIG: 0,
 	DEX_STAT_CONFIG: 0
 }
-@export var main_stat: StatConfig

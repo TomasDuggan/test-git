@@ -26,7 +26,7 @@ grow_vertical = 2
 texture = ExtResource("2_mutn8")
 expand_mode = 3
 
-[node name="HP" type="Control" parent="."]
+[node name="HP" type="Control" parent="." node_paths=PackedStringArray("_hp_bar")]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -40,18 +40,19 @@ offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("3_mutn8")
+_hp_bar = NodePath("HPBar")
 
 [node name="HPBar" type="ProgressBar" parent="HP"]
+modulate = Color(1, 0, 0, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -37.5
-offset_top = -5.0
-offset_right = 37.5
-offset_bottom = 5.0
+offset_left = -23.0
+offset_top = -10.0
+offset_right = 22.0
 grow_horizontal = 2
 grow_vertical = 2
 max_value = 1.0

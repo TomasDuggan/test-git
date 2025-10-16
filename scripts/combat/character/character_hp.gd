@@ -1,16 +1,23 @@
 extends Control
 class_name CharacterHP
 
+@export_category("Editor Dependencies")
+@export var _hp_bar: ProgressBar
+
 signal died()
 signal damage_received()
 
 var _max_hp: int
 var _current_hp: int
 
+const TWEEN_HP_BAR_DURATION := 0.5
+
 
 func initialize(hp: int) -> void:
 	_max_hp = hp
 	_current_hp = hp
+	
+	_update_hp_bar()
 
 func receive_damage(damage: int) -> void:
 	_current_hp = max(_current_hp - damage, 0)
@@ -19,7 +26,15 @@ func receive_damage(damage: int) -> void:
 		died.emit()
 	else:
 		damage_received.emit()
+	
+	_update_hp_bar()
 
+func _update_hp_bar()  -> void:
+	var tween: Tween = create_tween()
+	var normalized_current_hp: float = _current_hp / float(_max_hp)
+	
+	tween.tween_property(_hp_bar, "value", normalized_current_hp, TWEEN_HP_BAR_DURATION)
+	tween.finished.connect(func(): tween.kill(), CONNECT_ONE_SHOT)
 
 
 #

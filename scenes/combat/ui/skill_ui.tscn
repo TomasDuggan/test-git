@@ -1,22 +1,21 @@
 [gd_scene load_steps=5 format=3 uid="uid://prlfdpqd0u28"]
 
 [ext_resource type="Script" uid="uid://b5y74irwsnug7" path="res://scripts/combat/ui/skill_ui.gd" id="1_f0hv4"]
-[ext_resource type="Texture2D" uid="uid://dxdwp3pkwvc14" path="res://icon.svg" id="2_0me1v"]
+[ext_resource type="Texture2D" uid="uid://dw2lfl3bb7h6m" path="res://art/skills/fc4.png" id="2_1oqei"]
 [ext_resource type="Script" uid="uid://den54mwyhhrer" path="res://scripts/combat/ui/skill_description_modal_ui.gd" id="3_1oqei"]
 [ext_resource type="Texture2D" uid="uid://d2fguhq5ar1yu" path="res://art/backgrounds/tile_0003.png" id="3_4kmby"]
 
-[node name="SkillUI" type="Control" node_paths=PackedStringArray("_icon", "_description_modal")]
+[node name="SkillUI" type="Button" node_paths=PackedStringArray("_icon", "_description_modal")]
 custom_minimum_size = Vector2(80, 80)
-layout_mode = 3
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -25.0
-offset_top = -25.0
-offset_right = 25.0
-offset_bottom = 25.0
+offset_left = -40.0
+offset_top = -40.0
+offset_right = 40.0
+offset_bottom = 40.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_f0hv4")
@@ -30,30 +29,21 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("2_0me1v")
-expand_mode = 2
+mouse_filter = 2
+texture = ExtResource("2_1oqei")
 
-[node name="SelectButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="DescriptionModal" type="Control" parent="." node_paths=PackedStringArray("_title", "_desc")]
+[node name="DescriptionModal" type="Control" parent="." node_paths=PackedStringArray("_content_container", "_title", "_desc")]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -100.0
-offset_top = -250.0
 offset_right = 100.0
-offset_bottom = -50.0
 grow_horizontal = 2
 script = ExtResource("3_1oqei")
-_title = NodePath("MarginContainer/HBoxContainer/Title")
-_desc = NodePath("MarginContainer/HBoxContainer/Desc")
+_content_container = NodePath("Content")
+_title = NodePath("Content/TextsContainer/Title")
+_desc = NodePath("Content/TextsContainer/Desc")
 
 [node name="Background" type="NinePatchRect" parent="DescriptionModal"]
 layout_mode = 1
@@ -68,7 +58,7 @@ patch_margin_top = 11
 patch_margin_right = 7
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="DescriptionModal"]
+[node name="Content" type="MarginContainer" parent="DescriptionModal"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,20 +70,22 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="HBoxContainer" type="VBoxContainer" parent="DescriptionModal/MarginContainer"]
+[node name="TextsContainer" type="VBoxContainer" parent="DescriptionModal/Content"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="DescriptionModal/MarginContainer/HBoxContainer"]
+[node name="Title" type="Label" parent="DescriptionModal/Content/TextsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
 text = "Title"
 
-[node name="Desc" type="Label" parent="DescriptionModal/MarginContainer/HBoxContainer"]
+[node name="Desc" type="Label" parent="DescriptionModal/Content/TextsContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 0
-text = "DEscription asd asd ag adgksdjgksdg as fdkagfds"
+text = "DEscription asd "
 autowrap_mode = 3
 
-[connection signal="pressed" from="SelectButton" to="." method="_on_select_button_pressed"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

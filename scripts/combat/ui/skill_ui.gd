@@ -14,8 +14,12 @@ func initialize(config: SkillConfig) -> void:
 
 func _ready():
 	_icon.texture = _config.icon
-	_description_modal.hide()
 
-func _on_select_button_pressed():
+func _on_pressed():
 	CombatEventBus.raise_event_skill_selected(_config)
+
+func _on_mouse_entered():
 	_description_modal.show()
+
+func _on_mouse_exited():
+	_description_modal.hide()

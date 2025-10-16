@@ -1,7 +1,7 @@
 extends Object
 class_name SkillExecutionSystem
 
-enum SkillEffectType { DAMAGE, }
+enum SkillEffectType { DAMAGE, HEAL, ARMOR_UP, APPLY_BLEED, }
 
 
 static func excecute_skill(skill_config: SkillConfig, roll: RollResult) -> void:

@@ -1,8 +1,8 @@
 extends Object
 class_name RollInterpreterSystem
 
-
 enum RollOutcomeType { FAIL, PARTIAL, SUCCESS }
+
 
 static func resolve_outcome(skill_config: SkillConfig, dice_total: int) -> RollOutcomeType:
 	if dice_total <= skill_config.thresholds[RollOutcomeType.FAIL]:
@@ -13,7 +13,17 @@ static func resolve_outcome(skill_config: SkillConfig, dice_total: int) -> RollO
 	
 	return RollOutcomeType.SUCCESS
 
-
+static func scale_outcome(outcome_type: RollOutcomeType, fail_value: Variant, partial_value: Variant, success_value: Variant) -> Variant:
+	match outcome_type:
+		RollInterpreterSystem.RollOutcomeType.FAIL:
+			return fail_value
+		RollInterpreterSystem.RollOutcomeType.PARTIAL:
+			return partial_value
+		RollInterpreterSystem.RollOutcomeType.SUCCESS:
+			return success_value
+		_:
+			push_error("No deberia llegar aca")
+			return RollInterpreterSystem.RollOutcomeType.FAIL
 
 
 #

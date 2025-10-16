@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ct3iq4lp3e4vo" path="res://scripts/combat/combat.gd" id="1_5vqsm"]
 [ext_resource type="PackedScene" uid="uid://bul2u0tjanic8" path="res://scenes/character/character.tscn" id="2_6aonj"]
 [ext_resource type="Script" uid="uid://dxqjqdqqsn6kh" path="res://scripts/combat/managers/combat_manager.gd" id="3_8cw2p"]
-[ext_resource type="Resource" uid="uid://b3a5e33ydueoi" path="res://configs/character/heroes/warrior_config.tres" id="3_ltalu"]
-[ext_resource type="Resource" uid="uid://1rsqk4e052kl" path="res://configs/character/enemies/test_enemy_character_config.tres" id="3_pqpfu"]
+[ext_resource type="Resource" uid="uid://b3a5e33ydueoi" path="res://configs/character/instances/heroes/warrior_config.tres" id="3_ltalu"]
+[ext_resource type="Resource" uid="uid://1rsqk4e052kl" path="res://configs/character/instances/enemies/test_enemy_character_config.tres" id="3_pqpfu"]
 [ext_resource type="Script" uid="uid://bn4hf1hsjuk35" path="res://scripts/combat/managers/turn_manager.gd" id="4_4a6i5"]
 [ext_resource type="Script" uid="uid://bbjbgjlir05uj" path="res://scripts/combat/ui/skills_container_ui.gd" id="5_4voa6"]
 [ext_resource type="Texture2D" uid="uid://co8a1556ekfpw" path="res://art/backgrounds/tile_0001.png" id="5_jgg25"]
@@ -30,6 +30,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Characters" type="HBoxContainer" parent="CanvasLayer/HUD"]
 layout_mode = 1
@@ -68,6 +69,7 @@ offset_top = -98.0
 offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 
 [node name="Background" type="NinePatchRect" parent="CanvasLayer/Skills"]
 layout_mode = 1

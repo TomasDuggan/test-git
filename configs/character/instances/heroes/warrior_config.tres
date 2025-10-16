@@ -1,0 +1,54 @@
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=14 format=3 uid="uid://b3a5e33ydueoi"]
+
+[ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_06126"]
+[ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_qsmnq"]
+[ext_resource type="Script" uid="uid://bto7l8ty1bdpr" path="res://configs/skill/effects/skill_effect_config.gd" id="3_fn4su"]
+[ext_resource type="Texture2D" uid="uid://dw2lfl3bb7h6m" path="res://art/skills/fc4.png" id="4_0ehpy"]
+[ext_resource type="Script" uid="uid://chu3wno85ljhm" path="res://configs/skill/effects/damage_skill_effect_config.gd" id="4_qsmnq"]
+[ext_resource type="Resource" uid="uid://s52ip5rmkm8g" path="res://configs/stats/instances/STR_stat_config.tres" id="5_bveeg"]
+[ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="6_vsvju"]
+[ext_resource type="Resource" uid="uid://pdqtg5p4bpst" path="res://configs/stats/instances/INT_stat_config.tres" id="7_wpr6j"]
+[ext_resource type="Resource" uid="uid://g5su7bnt8cv" path="res://configs/stats/instances/DEX_stat_config.tres" id="8_00up1"]
+[ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="9_ownuh"]
+
+[sub_resource type="Resource" id="Resource_fn4su"]
+script = ExtResource("4_qsmnq")
+damage = 15
+scaling_stat = ExtResource("5_bveeg")
+metadata/_custom_type_script = "uid://chu3wno85ljhm"
+
+[sub_resource type="Resource" id="Resource_70ky5"]
+script = ExtResource("2_qsmnq")
+display_name = "Slash"
+desc = "Hits single enemy."
+icon = ExtResource("4_0ehpy")
+amount_of_dice = 2
+die_size = 8
+effect_configs = Array[ExtResource("3_fn4su")]([SubResource("Resource_fn4su")])
+affects_enemies = true
+amount_of_targets = 1
+thresholds = Dictionary[int, int]({
+0: 8,
+1: 11
+})
+metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
+
+[sub_resource type="Resource" id="Resource_u8ghw"]
+script = ExtResource("9_ownuh")
+all_stats = Dictionary[ExtResource("6_vsvju"), int]({
+ExtResource("5_bveeg"): 10,
+ExtResource("7_wpr6j"): 3,
+ExtResource("8_00up1"): 4
+})
+metadata/_custom_type_script = "uid://uve6uqxfi242"
+
+[resource]
+script = ExtResource("1_06126")
+display_name = "Warrior"
+hp = 100
+armor = 5
+magic_resistance = 3
+speed = 10
+stats = SubResource("Resource_u8ghw")
+skill_configs = Array[ExtResource("2_qsmnq")]([SubResource("Resource_70ky5")])
+metadata/_custom_type_script = "uid://by3x5xev328bq"
