@@ -34,16 +34,21 @@ texture = ExtResource("2_1oqei")
 
 [node name="DescriptionModal" type="Control" parent="." node_paths=PackedStringArray("_content_container", "_title", "_desc")]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = -100.0
+offset_top = -50.0
 offset_right = 100.0
+offset_bottom = -50.0
 grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("3_1oqei")
-_content_container = NodePath("Content")
-_title = NodePath("Content/TextsContainer/Title")
-_desc = NodePath("Content/TextsContainer/Desc")
+_content_container = NodePath("ContentContainer")
+_title = NodePath("ContentContainer/Content/Title")
+_desc = NodePath("ContentContainer/Content/Desc")
 
 [node name="Background" type="NinePatchRect" parent="DescriptionModal"]
 layout_mode = 1
@@ -58,7 +63,7 @@ patch_margin_top = 11
 patch_margin_right = 7
 patch_margin_bottom = 8
 
-[node name="Content" type="MarginContainer" parent="DescriptionModal"]
+[node name="ContentContainer" type="MarginContainer" parent="DescriptionModal"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -70,19 +75,17 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="TextsContainer" type="VBoxContainer" parent="DescriptionModal/Content"]
+[node name="Content" type="VBoxContainer" parent="DescriptionModal/ContentContainer"]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="DescriptionModal/Content/TextsContainer"]
+[node name="Title" type="Label" parent="DescriptionModal/ContentContainer/Content"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
 text = "Title"
 
-[node name="Desc" type="Label" parent="DescriptionModal/Content/TextsContainer"]
+[node name="Desc" type="Label" parent="DescriptionModal/ContentContainer/Content"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 0
 text = "DEscription asd "
 autowrap_mode = 3
 

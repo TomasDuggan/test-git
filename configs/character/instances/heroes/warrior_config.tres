@@ -20,7 +20,7 @@ metadata/_custom_type_script = "uid://chu3wno85ljhm"
 [sub_resource type="Resource" id="Resource_70ky5"]
 script = ExtResource("2_qsmnq")
 display_name = "Slash"
-desc = "Hits single enemy."
+desc = "Hits single enemy"
 icon = ExtResource("4_0ehpy")
 amount_of_dice = 2
 die_size = 8

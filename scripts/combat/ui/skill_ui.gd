@@ -1,5 +1,8 @@
 extends Control
 class_name SkillUI
+"""
+Boton para seleccionar una skill en combate
+"""
 
 @export_category("Editor Dependencies")
 @export var _icon: TextureRect
