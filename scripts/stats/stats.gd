@@ -9,6 +9,19 @@ func _init(stats: StatsConfig) -> void:
 		var stat_value := StatValue.new(stat_config, stats.all_stats[stat_config])
 		_all_stats.append(stat_value)
 
+"""
+Formula de D&D. Funciona bien si los stats base giran alrededor de 10.
+Ej:
+3 -> -3
+8 -> -1
+10 -> 0
+14 -> +2
+18 -> +4
+"""
+func get_stat_modifier(stat_config: StatConfig) -> int:
+	var stat_value: float = float(get_stat_amount(stat_config))
+	return floor((stat_value - 10.0) / 2.0)
+
 func scale_effect_by_stat(base: Variant, effect_config: SkillEffectConfig) -> Variant:
 	var stat_amount: int = get_stat_amount(effect_config.scaling_stat)
 	return base + stat_amount * effect_config.stat_scaling_multiplier

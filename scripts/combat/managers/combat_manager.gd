@@ -36,7 +36,7 @@ func _roll_pressed() -> void:
 		return
 	
 	var roll_result: RollResult = _roll_dice()
-	SkillExecutionSystem.excecute_skill(_current_skill, roll_result)
+	SkillExecutionSystem.execute_skill(_current_skill, roll_result)
 
 func _roll_dice() -> RollResult:
 	var roll_result := RollResult.new(_current_character, _current_targets, _current_skill)

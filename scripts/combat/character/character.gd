@@ -1,11 +1,10 @@
 extends Control
 class_name Character
 
-
 @export var _config: CharacterConfig
-@onready var hp: CharacterHP = $HP # Facade
+@onready var _hp: CharacterHP = $HP
 
-var stats: CharacterStats # Facade
+var _stats: CharacterStats
 
 
 func _gui_input(event: InputEvent):
@@ -14,8 +13,8 @@ func _gui_input(event: InputEvent):
 			CombatEventBus.raise_event_character_selected(self)
 
 func _ready():
-	hp.initialize(_config.hp)
-	stats = CharacterStats.new(_config.stats)
+	_hp.initialize(_config.hp)
+	_stats = CharacterStats.new(_config.stats)
 
 func start_turn() -> void:
 	pass
@@ -25,6 +24,14 @@ func end_turn() -> void:
 
 func get_skill_configs() -> Array[SkillConfig]:
 	return _config.skill_configs
+
+# Facade
+func get_stats() -> CharacterStats:
+	return _stats
+
+# Facade
+func get_hp() -> CharacterHP:
+	return _hp
 
 func is_hero() -> bool:
 	return _config.is_hero
