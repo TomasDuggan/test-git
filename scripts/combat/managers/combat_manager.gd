@@ -41,8 +41,8 @@ func _roll_pressed() -> void:
 func _roll_dice() -> RollResult:
 	var roll_result := RollResult.new(_current_character, _current_targets, _current_skill)
 	
-	roll_result.dice_result = DiceSystem.roll(_current_skill, _current_character)
-	roll_result.outcome_type = RollInterpreterSystem.resolve_outcome(_current_skill, roll_result.dice_result.total)
+	roll_result.dice_result = DiceSystem.roll(_current_skill.dice_config, _current_skill.roll_stat_modifier, _current_character)
+	roll_result.outcome_type = RollInterpreterSystem.resolve_outcome(_current_skill.dice_config, roll_result.dice_result.total)
 	
 	roll_result.print_roll() # TODO: es debug
 	

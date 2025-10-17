@@ -17,7 +17,7 @@ func _init(caster_arg: Character, targets_arg: Array[Character], skill_arg: Skil
 func print_roll() -> void:
 	var caster_info := "Caster: [color='green']%s[/color]" % caster._config.display_name
 	var skill_info := "Skill: [color='blue']%s[/color]" % skill.display_name
-	var dice_info := "Dice amount: [color='yellow']%s[/color]. Dice size: [color='yellow']%s[/color]" % [skill.amount_of_dice, skill.die_size]
+	var dice_info := "Dice amount: [color='yellow']%s[/color]. Dice size: [color='yellow']%s[/color]" % [skill.dice_config.amount_of_dice, skill.dice_config.die_size]
 	var rolls_info := "Rolls: [color='purple']%s[/color]" % [str(dice_result.rolls)]
 	var rolls_result_info := "Total: [color='purple']%s[/color]" % dice_result.total
 	var outcome_info := "Outcome type: [color='purple']%s[/color]" % EnumsHelper.enum_to_string(RollInterpreterSystem.RollOutcomeType, outcome_type)
