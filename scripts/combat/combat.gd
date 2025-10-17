@@ -1,9 +1,9 @@
 extends Node2D
 class_name Combat
 
-@onready var mage: Character = $CanvasLayer/HUD/Characters/Heroes/Mage
-@onready var warrior: Character = $CanvasLayer/HUD/Characters/Heroes/Warrior
-@onready var enemy: Character = $CanvasLayer/HUD/Characters/Enemies/Enemy
+@onready var mage = $CanvasLayer/HUD/Characters/HeroesContainer/Mage
+@onready var warrior = $CanvasLayer/HUD/Characters/HeroesContainer/Warrior
+@onready var enemy = $CanvasLayer/HUD/Characters/EnemiesContainer/Enemy
 
 
 func _ready():

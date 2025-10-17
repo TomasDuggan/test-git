@@ -10,7 +10,7 @@ func _ready():
 	CombatEventBus.turn_started.connect(_on_turn_started)
 	CombatEventBus.skill_selected.connect(_on_skill_selected)
 	CombatEventBus.character_selected.connect(_on_character_selected)
-	CombatEventBus.roll_pressed.connect(_execute_skill)
+	CombatEventBus.roll_pressed.connect(_roll_pressed)
 
 func _on_turn_started(character: Character) -> void:
 	_current_character = character
@@ -28,7 +28,7 @@ func _on_character_selected(character: Character) -> void:
 	if !_current_targets.has(character):
 		_current_targets.append(character)
 
-func _execute_skill() -> void:
+func _roll_pressed() -> void:
 	if _current_skill == null:
 		return
 	
@@ -52,7 +52,7 @@ func _exit_tree():
 	CombatEventBus.turn_started.disconnect(_on_turn_started)
 	CombatEventBus.skill_selected.disconnect(_on_skill_selected)
 	CombatEventBus.character_selected.disconnect(_on_character_selected)
-	CombatEventBus.roll_pressed.disconnect(_execute_skill)
+	CombatEventBus.roll_pressed.disconnect(_roll_pressed)
 
 
 

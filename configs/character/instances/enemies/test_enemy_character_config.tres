@@ -30,6 +30,7 @@ metadata/_custom_type_script = "uid://uve6uqxfi242"
 script = ExtResource("1_8c44a")
 display_name = "Enemy 1"
 hp = 50
+speed = 5
 stats = SubResource("Resource_npyhs")
 skill_configs = Array[ExtResource("2_np4wf")]([SubResource("Resource_8c44a")])
 metadata/_custom_type_script = "uid://by3x5xev328bq"

@@ -14,6 +14,7 @@ func _clean_skills() -> void:
 		c.queue_free()
 
 func _on_turn_started(character: Character) -> void:
+	_clean_skills()
 	_add_skills(character.get_skill_configs())
 
 func _add_skills(skill_configs: Array[SkillConfig]) -> void:

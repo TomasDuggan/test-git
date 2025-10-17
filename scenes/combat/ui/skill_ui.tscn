@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://prlfdpqd0u28"]
 
 [ext_resource type="Script" uid="uid://b5y74irwsnug7" path="res://scripts/combat/ui/skill_ui.gd" id="1_f0hv4"]
-[ext_resource type="Texture2D" uid="uid://dw2lfl3bb7h6m" path="res://art/skills/fc4.png" id="2_1oqei"]
+[ext_resource type="Texture2D" uid="uid://dw2lfl3bb7h6m" path="res://art/skills/sword.png" id="2_1oqei"]
 [ext_resource type="Script" uid="uid://den54mwyhhrer" path="res://scripts/combat/ui/skill_description_modal_ui.gd" id="3_1oqei"]
-[ext_resource type="Texture2D" uid="uid://d2fguhq5ar1yu" path="res://art/backgrounds/tile_0003.png" id="3_4kmby"]
+[ext_resource type="Texture2D" uid="uid://d2fguhq5ar1yu" path="res://art/menu_backgrounds/tile_0003.png" id="3_4kmby"]
 
 [node name="SkillUI" type="Button" node_paths=PackedStringArray("_icon", "_description_modal")]
 custom_minimum_size = Vector2(80, 80)

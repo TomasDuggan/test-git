@@ -26,8 +26,14 @@ func end_turn() -> void:
 func get_skill_configs() -> Array[SkillConfig]:
 	return _config.skill_configs
 
+func is_hero() -> bool:
+	return _config.is_hero
 
+func is_faster_than(speed: int) -> bool:
+	return _config.speed > speed
 
+func get_speed() -> int:
+	return _config.speed
 
 
 

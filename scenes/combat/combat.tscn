@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://kviba886ut6t"]
+[gd_scene load_steps=13 format=3 uid="uid://kviba886ut6t"]
 
 [ext_resource type="Script" uid="uid://ct3iq4lp3e4vo" path="res://scripts/combat/combat.gd" id="1_5vqsm"]
 [ext_resource type="PackedScene" uid="uid://bul2u0tjanic8" path="res://scenes/character/character.tscn" id="2_6aonj"]
@@ -6,10 +6,12 @@
 [ext_resource type="Resource" uid="uid://b3a5e33ydueoi" path="res://configs/character/instances/heroes/warrior_config.tres" id="3_ltalu"]
 [ext_resource type="Resource" uid="uid://1rsqk4e052kl" path="res://configs/character/instances/enemies/test_enemy_character_config.tres" id="3_pqpfu"]
 [ext_resource type="Script" uid="uid://bn4hf1hsjuk35" path="res://scripts/combat/managers/turn_manager.gd" id="4_4a6i5"]
+[ext_resource type="Texture2D" uid="uid://dvk8usg7r176v" path="res://art/backgrounds/field.png" id="4_gwckk"]
 [ext_resource type="Script" uid="uid://bbjbgjlir05uj" path="res://scripts/combat/ui/skills_container_ui.gd" id="5_4voa6"]
-[ext_resource type="Texture2D" uid="uid://co8a1556ekfpw" path="res://art/backgrounds/tile_0001.png" id="5_jgg25"]
+[ext_resource type="Texture2D" uid="uid://co8a1556ekfpw" path="res://art/menu_backgrounds/tile_0001.png" id="5_jgg25"]
 [ext_resource type="Resource" uid="uid://u30vo2vcqnyx" path="res://configs/character/instances/heroes/mage_config.tres" id="6_4a6i5"]
 [ext_resource type="Script" uid="uid://2opohag5bnan" path="res://scripts/combat/ui/roll_button_ui.gd" id="11_3dmww"]
+[ext_resource type="Script" uid="uid://2p1loj53mqs6" path="res://scripts/combat/ui/end_turn_button_ui.gd" id="11_gwckk"]
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_5vqsm")
@@ -23,6 +25,15 @@ script = ExtResource("3_8cw2p")
 script = ExtResource("4_4a6i5")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Background" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_gwckk")
+expand_mode = 1
 
 [node name="HUD" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -39,28 +50,30 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
+offset_top = 122.0
+offset_bottom = 172.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Heroes" type="HBoxContainer" parent="CanvasLayer/HUD/Characters"]
+[node name="HeroesContainer" type="HBoxContainer" parent="CanvasLayer/HUD/Characters"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Mage" parent="CanvasLayer/HUD/Characters/Heroes" instance=ExtResource("2_6aonj")]
+[node name="Mage" parent="CanvasLayer/HUD/Characters/HeroesContainer" instance=ExtResource("2_6aonj")]
 layout_mode = 2
 _config = ExtResource("6_4a6i5")
 
-[node name="Warrior" parent="CanvasLayer/HUD/Characters/Heroes" instance=ExtResource("2_6aonj")]
+[node name="Warrior" parent="CanvasLayer/HUD/Characters/HeroesContainer" instance=ExtResource("2_6aonj")]
 layout_mode = 2
 _config = ExtResource("3_ltalu")
 
-[node name="Enemies" type="HBoxContainer" parent="CanvasLayer/HUD/Characters"]
+[node name="EnemiesContainer" type="HBoxContainer" parent="CanvasLayer/HUD/Characters"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="Enemy" parent="CanvasLayer/HUD/Characters/Enemies" instance=ExtResource("2_6aonj")]
+[node name="Enemy" parent="CanvasLayer/HUD/Characters/EnemiesContainer" instance=ExtResource("2_6aonj")]
 layout_mode = 2
 _config = ExtResource("3_pqpfu")
 
@@ -127,5 +140,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "End Turn"
+script = ExtResource("11_gwckk")
 
 [connection signal="pressed" from="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/RollButton" to="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/RollButton" method="_on_pressed"]
+[connection signal="pressed" from="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/EndTurnButton" to="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/EndTurnButton" method="_on_pressed"]

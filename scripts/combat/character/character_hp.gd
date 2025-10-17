@@ -32,6 +32,7 @@ func receive_damage(damage: int) -> void:
 
 func heal(heal_amount: int) -> void:
 	_current_hp = min(_current_hp + heal_amount, _max_hp)
+	_update_hp_bar()
 	healed.emit()
 
 func _update_hp_bar()  -> void:
