@@ -35,18 +35,18 @@ func _roll_pressed() -> void:
 	if _current_skill.amount_of_targets != _current_targets.size():
 		return
 	
-	var roll_result: RollResult = _roll_dice()
-	SkillExecutionSystem.execute_skill(_current_skill, roll_result)
+	var skill_context: SkillCastContext = _resolve_skill_context()
+	SkillExecutionSystem.execute_skill(_current_skill, skill_context)
 
-func _roll_dice() -> RollResult:
-	var roll_result := RollResult.new(_current_character, _current_targets, _current_skill)
+func _resolve_skill_context() -> SkillCastContext:
+	var skill_context := SkillCastContext.new(_current_character, _current_targets, _current_skill)
 	
-	roll_result.dice_result = DiceSystem.roll(_current_skill.dice_config, _current_skill.roll_stat_modifier, _current_character)
-	roll_result.outcome_type = RollInterpreterSystem.resolve_outcome(_current_skill.dice_config, roll_result.dice_result.total)
+	skill_context.dice_result = DiceSystem.roll(_current_skill.dice_config, _current_skill.roll_stat_modifier, _current_character)
+	skill_context.outcome_type = RollInterpreterSystem.resolve_outcome(skill_context.dice_result.total, _current_skill.dice_config)
 	
-	roll_result.print_roll() # TODO: es debug
+	skill_context.print_roll() # TODO: es debug
 	
-	return roll_result
+	return skill_context
 
 func _exit_tree():
 	CombatEventBus.turn_started.disconnect(_on_turn_started)

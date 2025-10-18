@@ -12,7 +12,7 @@ static func roll(dice_config: DiceConfig, roll_stat_modifier: StatConfig, charac
 	for r: int in rolls:
 		dice_sum += r
 	
-	var stat_modifier: int = character.get_stats().get_stat_modifier(roll_stat_modifier)
+	var stat_modifier: int = character.get_stats().get_roll_stat_modifier_value(roll_stat_modifier)
 	var total: int = dice_sum + stat_modifier
 	
 	return DiceResult.new(

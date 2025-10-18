@@ -1,6 +1,8 @@
 extends Object
-class_name RollResult
-
+class_name SkillCastContext
+"""
+DTO para el contexto del casteo de un Skill
+"""
 
 var caster: Character
 var targets: Array[Character]

@@ -1,17 +1,26 @@
 extends Object
 class_name RollInterpreterSystem
+"""
+Interpreta los thresholds de un roll
+"""
 
 enum RollOutcomeType { FAIL, PARTIAL, SUCCESS }
 
+const SUCCESS_THRESHOLD := 0.75
+const PARTIAL_THRESHOLD := 0.5
 
-static func resolve_outcome(dice_config: DiceConfig, dice_total: int) -> RollOutcomeType:
-	if dice_total <= dice_config.thresholds[RollOutcomeType.FAIL]:
-		return RollOutcomeType.FAIL
-	
-	if dice_total <= dice_config.thresholds[RollOutcomeType.PARTIAL]:
+
+static func resolve_outcome(total: int, dice_config: DiceConfig) -> RollOutcomeType:
+	var max_roll = dice_config.amount_of_dice * dice_config.die_size
+	var success_threshold = floor(max_roll * SUCCESS_THRESHOLD)
+	var partial_threshold = floor(max_roll * PARTIAL_THRESHOLD)
+
+	if total >= success_threshold:
+		return RollOutcomeType.SUCCESS
+	elif total >= partial_threshold:
 		return RollOutcomeType.PARTIAL
-	
-	return RollOutcomeType.SUCCESS
+	else:
+		return RollOutcomeType.FAIL
 
 static func scale_outcome(outcome_type: RollOutcomeType, fail_value: Variant, partial_value: Variant, success_value: Variant) -> Variant:
 	match outcome_type:

@@ -14,11 +14,11 @@ Formula de D&D. Funciona bien si los stats base giran alrededor de 10.
 Ej:
 3 -> -3
 8 -> -1
-10 -> 0
+10 -> 0  ----- 10 es el punto medio -----
 14 -> +2
 18 -> +4
 """
-func get_stat_modifier(stat_config: StatConfig) -> int:
+func get_roll_stat_modifier_value(stat_config: StatConfig) -> int:
 	var stat_value: float = float(get_stat_amount(stat_config))
 	return floor((stat_value - 10.0) / 2.0)
 
