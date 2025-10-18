@@ -11,5 +11,10 @@ class_name SkillConfig
 @export var roll_stat_modifier: StatConfig
 @export var effect_configs: Array[SkillEffectConfig]
 @export var recoil_configs: Array[SkillRecoilConfig]
-@export var affects_enemies: bool
 @export var amount_of_targets: int
+
+
+func requires_target_selection() -> bool:
+	return effect_configs.any(func(e: SkillEffectConfig): 
+		return e.target_scope == SkillEffectConfig.TargetScope.CUSTOM_SELECTION
+	)

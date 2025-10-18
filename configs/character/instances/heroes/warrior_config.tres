@@ -34,7 +34,6 @@ dice_config = ExtResource("3_bveeg")
 roll_stat_modifier = ExtResource("5_bveeg")
 effect_configs = Array[ExtResource("3_fn4su")]([SubResource("Resource_fn4su")])
 recoil_configs = Array[ExtResource("7_fn4su")]([SubResource("Resource_bveeg")])
-affects_enemies = true
 amount_of_targets = 1
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 

@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=15 format=3 uid="uid://u30vo2vcqnyx"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=16 format=3 uid="uid://u30vo2vcqnyx"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_mt1ex"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_fodxj"]
 [ext_resource type="Script" uid="uid://bto7l8ty1bdpr" path="res://configs/skill/effects/skill_effect_config.gd" id="3_bh3vp"]
+[ext_resource type="Resource" uid="uid://cofce78tosmjp" path="res://configs/dice/instances/dice_config_2d8.tres" id="3_y0q5b"]
 [ext_resource type="Script" uid="uid://s8a5f26n6h3f" path="res://configs/skill/effects/heal_skill_effect_config.gd" id="4_mt1ex"]
 [ext_resource type="Resource" uid="uid://s52ip5rmkm8g" path="res://configs/stats/instances/STR_stat_config.tres" id="4_y0q5b"]
 [ext_resource type="Texture2D" uid="uid://cc8o4dmkn8o5c" path="res://art/skills/map.png" id="5_fodxj"]
@@ -23,6 +24,7 @@ script = ExtResource("2_fodxj")
 display_name = "Heal"
 desc = "Heals a target"
 icon = ExtResource("5_fodxj")
+dice_config = ExtResource("3_y0q5b")
 roll_stat_modifier = ExtResource("8_n2lhs")
 effect_configs = Array[ExtResource("3_bh3vp")]([SubResource("Resource_bh3vp")])
 amount_of_targets = 1

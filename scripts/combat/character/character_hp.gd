@@ -2,7 +2,7 @@ extends Control
 class_name CharacterHP
 
 @export_category("Editor Dependencies")
-@export var _hp_bar: ProgressBar
+@export var _hp_bar: CharacterHPBar
 
 signal died()
 signal damage_received()
@@ -10,17 +10,19 @@ signal healed()
 
 var _max_hp: int
 var _current_hp: int
+var _current_armor: int
+var _current_mr: int
 
-const TWEEN_HP_BAR_DURATION := 0.5
 
-
-func initialize(hp: int) -> void:
+func initialize(hp: int, armor: int, mr: int) -> void:
 	_max_hp = hp
 	_current_hp = hp
+	_current_armor = armor
+	_current_mr = mr
 	
-	_update_hp_bar()
+	_hp_bar.update_hp_bar(_current_hp, _max_hp)
 
-func receive_damage(damage: int) -> void:
+func receive_damage(_source: Character, damage: int) -> void:
 	_current_hp = max(_current_hp - damage, 0)
 	
 	if _current_hp == 0:
@@ -28,19 +30,12 @@ func receive_damage(damage: int) -> void:
 	else:
 		damage_received.emit()
 	
-	_update_hp_bar()
+	_hp_bar.update_hp_bar(_current_hp, _max_hp)
 
 func heal(heal_amount: int) -> void:
 	_current_hp = min(_current_hp + heal_amount, _max_hp)
-	_update_hp_bar()
+	_hp_bar.update_hp_bar(_current_hp, _max_hp)
 	healed.emit()
-
-func _update_hp_bar()  -> void:
-	var tween: Tween = create_tween()
-	var normalized_current_hp: float = _current_hp / float(_max_hp)
-	
-	tween.tween_property(_hp_bar, "value", normalized_current_hp, TWEEN_HP_BAR_DURATION)
-	tween.finished.connect(func(): tween.kill(), CONNECT_ONE_SHOT)
 
 
 #

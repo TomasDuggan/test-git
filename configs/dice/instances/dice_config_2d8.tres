@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="DiceConfig" load_steps=2 format=3 uid="uid://cofce78tosmjp"]
+
+[ext_resource type="Script" uid="uid://2t4t8ejp4ct3" path="res://configs/dice/dice_config.gd" id="1_hfl5x"]
+
+[resource]
+script = ExtResource("1_hfl5x")
+amount_of_dice = 2
+die_size = 8
+metadata/_custom_type_script = "uid://2t4t8ejp4ct3"

@@ -1,6 +1,8 @@
 extends Object
 class_name DiceSystem
-
+"""
+Calcula el resultado de tirar los dados
+"""
 
 static func roll(dice_config: DiceConfig, roll_stat_modifier: StatConfig, character: Character) -> DiceResult:
 	var rolls: Array[int] = []

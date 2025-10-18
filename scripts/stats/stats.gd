@@ -12,11 +12,15 @@ func _init(stats: StatsConfig) -> void:
 """
 Formula de D&D. Funciona bien si los stats base giran alrededor de 10.
 Ej:
-3 -> -3
-8 -> -1
-10 -> 0  ----- 10 es el punto medio -----
-14 -> +2
-18 -> +4
+1, 2 -> -4
+3, 4 -> -3
+5, 6 -> -2
+7, 8 -> -1
+9, 10, 11 -> +0  ----- 10 es el punto medio -----
+12, 13 -> +1
+14, 15 -> +2
+16, 17 -> +3
+18, 19 -> +4
 """
 func get_roll_stat_modifier_value(stat_config: StatConfig) -> int:
 	var stat_value: float = float(get_stat_amount(stat_config))
@@ -34,5 +38,5 @@ func _get_stat(stat_config: StatConfig) -> StatValue:
 		if stat.config == stat_config:
 			return stat
 	
-	push_error("No deberia llegar aca.")
+	push_error("CharacterStats: No deberia llegar aca, todos los Characters deberian tener algun valor para todos los Stats.")
 	return null

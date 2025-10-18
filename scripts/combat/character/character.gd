@@ -13,7 +13,7 @@ func _gui_input(event: InputEvent):
 			CombatEventBus.raise_event_character_selected(self)
 
 func _ready():
-	_hp.initialize(_config.hp)
+	_hp.initialize(_config.hp, _config.armor, _config.magic_resistance)
 	_stats = CharacterStats.new(_config.stats)
 
 func start_turn() -> void:
@@ -35,6 +35,9 @@ func get_hp() -> CharacterHP:
 
 func is_hero() -> bool:
 	return _config.is_hero
+
+func is_ally_of(other: Character) -> bool:
+	return self.is_hero() == other.is_hero()
 
 func is_faster_than(speed: int) -> bool:
 	return _config.speed > speed
