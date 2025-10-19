@@ -7,7 +7,7 @@ func handle(config: SkillEffectConfig, targets: Array[Character], _cast_context:
 	
 	for target: Character in targets:
 		for status_effect_config: StatusEffectConfig in status_effect_skill_config.statuses:
-			target.get_status_effects().add_status_effect(status_effect_config)
+			target.add_status_effect(status_effect_config)
 
 
 

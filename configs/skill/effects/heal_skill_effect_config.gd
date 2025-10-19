@@ -8,7 +8,7 @@ Cura segun HealSource
 
 @export var source_type: HealSource
 @export var heal_amount: int # FLAT
-@export var damage_multiplier: float # BY_DAMAGE_DONE
+@export var damage_done_heal_multiplier: float # BY_DAMAGE_DONE
 
 enum HealSource { FLAT, BY_DAMAGE_DONE }
 

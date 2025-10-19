@@ -19,14 +19,15 @@
 
 [sub_resource type="Resource" id="Resource_fn4su"]
 script = ExtResource("4_qsmnq")
-damage = 15
+damage = 1
 scaling_stat = ExtResource("5_bveeg")
+stat_scaling_multiplier = 0.2
 metadata/_custom_type_script = "uid://chu3wno85ljhm"
 
 [sub_resource type="Resource" id="Resource_dtr3s"]
 script = ExtResource("9_4v0dk")
 damage_per_turn = 5
-turns_duration = 3
+stacks = 3
 metadata/_custom_type_script = "uid://ddow0juot6lv0"
 
 [sub_resource type="Resource" id="Resource_kldn8"]
@@ -37,6 +38,8 @@ metadata/_custom_type_script = "uid://b4bmjego7lymm"
 [sub_resource type="Resource" id="Resource_bveeg"]
 script = ExtResource("8_0ehpy")
 hp_amount = 5
+pierce_armor = true
+pierce_mr = true
 trigger_outcome = 1
 target_scope = 1
 metadata/_custom_type_script = "uid://dr5qvj20hii80"

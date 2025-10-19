@@ -4,7 +4,9 @@ class_name CharacterStats
 var _all_stats: Array[StatValue] = []
 
 
-func _init(stats: StatsConfig) -> void:
+func _init(character_config: CharacterConfig) -> void:
+	var stats: StatsConfig = character_config.stats
+	
 	for stat_config: StatConfig in stats.all_stats.keys():
 		var stat_value := StatValue.new(stat_config, stats.all_stats[stat_config])
 		_all_stats.append(stat_value)
@@ -38,5 +40,5 @@ func _get_stat(stat_config: StatConfig) -> StatValue:
 		if stat.config == stat_config:
 			return stat
 	
-	push_error("CharacterStats: No deberia llegar aca, todos los Characters deberian tener algun valor para todos los Stats.")
+	push_error("Todos los Characters deberian tener algun valor para todos los Stats.")
 	return null

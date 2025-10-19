@@ -1,5 +1,8 @@
 extends Control
 class_name Character
+"""
+Centralizador, facade y API generica para hablar con un Character y sus componentes internos.
+"""
 
 @export var _config: CharacterConfig
 @onready var _hp: CharacterHP = $HP
@@ -15,7 +18,7 @@ func _gui_input(event: InputEvent):
 
 func _ready():
 	_hp.initialize(_config.hp, _config.armor, _config.magic_resistance)
-	_stats = CharacterStats.new(_config.stats)
+	_stats = CharacterStats.new(_config)
 	_status_effect_manager = CharacterStatusEffects.new(self)
 
 func start_turn() -> void:
@@ -27,16 +30,20 @@ func end_turn() -> void:
 func get_skill_configs() -> Array[SkillConfig]:
 	return _config.skill_configs
 
-# Facade
-func get_stats() -> CharacterStats:
-	return _stats
+func scale_effect_by_stat(base: Variant, effect_config: SkillEffectConfig) -> Variant:
+	return _stats.scale_effect_by_stat(base, effect_config)
 
-# Facade
-func get_hp() -> CharacterHP:
-	return _hp
+func get_roll_stat_modifier_value(stat_config: StatConfig) -> int:
+	return _stats.get_roll_stat_modifier_value(stat_config)
 
-func get_status_effects() -> CharacterStatusEffects:
-	return _status_effect_manager
+func receive_damage(info: DamageInfo) -> int:
+	return _hp.receive_damage(info)
+
+func heal(heal_amount: int) -> int:
+	return _hp.heal(heal_amount)
+
+func add_status_effect(config: StatusEffectConfig) -> void:
+	_status_effect_manager.add_status_effect(config)
 
 func is_hero() -> bool:
 	return _config.is_hero

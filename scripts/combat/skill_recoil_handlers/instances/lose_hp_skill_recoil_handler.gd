@@ -13,7 +13,7 @@ func handle(config: SkillRecoilConfig, targets: Array[Character], cast_context: 
 	)
 	
 	for target: Character in targets:
-		target.get_hp().receive_damage(damage_info)
+		target.receive_damage(damage_info)
 
 
 #

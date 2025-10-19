@@ -12,5 +12,5 @@ func scale_effect_by_stat(caster: Character, base_effect_power: Variant, config:
 	if config.scaling_stat == null || config.stat_scaling_multiplier <= 0:
 		return base_effect_power
 	
-	return caster.get_stats().scale_effect_by_stat(base_effect_power, config)
+	return caster.scale_effect_by_stat(base_effect_power, config)
 #

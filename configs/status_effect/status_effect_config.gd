@@ -3,7 +3,7 @@ extends Resource
 class_name StatusEffectConfig
 
 
-@export var turns_duration: int
+@export var stacks: int = 1
 
 @abstract
 func get_type() -> CharacterStatusEffects.StatusType

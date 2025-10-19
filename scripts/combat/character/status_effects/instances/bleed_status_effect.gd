@@ -4,21 +4,30 @@ class_name BleedStatusEffect
 const PIERCE_ARMOR := true
 const PIERCE_MR := true
 
+var _bleed_config: BleedStatusEffectConfig
+var _damage_info: DamageInfo
 
-func apply_effect() -> void:
-	var bleed_config := config as BleedStatusEffectConfig
-	var damage_info := DamageInfo.new(
+
+func initialize(character_arg: Character, config_arg: StatusEffectConfig) -> void:
+	super.initialize(character_arg, config_arg)
+	
+	_bleed_config = config as BleedStatusEffectConfig
+	_damage_info = DamageInfo.new(
 		character,
-		bleed_config.damage_per_turn,
+		_bleed_config.damage_per_turn,
 		PIERCE_ARMOR,
 		PIERCE_MR
 	)
-	
-	character.get_hp().receive_damage(damage_info)
-	
 
-func apply_on_start_turn() -> bool:
-	return true
+func on_turn_started() -> void:
+	character.receive_damage(_damage_info)
+	consume_stack()
 
+func on_status_reapplied(new_config: StatusEffectConfig) -> void:
+	stacks += new_config.stacks
+	
+	var new_bleed_config := new_config as BleedStatusEffectConfig
+	if new_bleed_config.damage_per_turn > _bleed_config.damage_per_turn:
+		_damage_info.damage = new_bleed_config.damage_per_turn
 
 #

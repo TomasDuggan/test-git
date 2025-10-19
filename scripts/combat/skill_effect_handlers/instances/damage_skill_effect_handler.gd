@@ -14,7 +14,7 @@ func handle(config: SkillEffectConfig, targets: Array[Character], cast_context: 
 	)
 	
 	for target: Character in targets:
-		execution_context.total_damage_done += target.get_hp().receive_damage(damage_info)
+		execution_context.total_damage_done += target.receive_damage(damage_info)
 
 
 

@@ -30,7 +30,7 @@ effect_configs = Array[ExtResource("3_bh3vp")]([SubResource("Resource_bh3vp")])
 amount_of_targets = 1
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
-[sub_resource type="Resource" id="Resource_u8ghw"]
+[sub_resource type="Resource" id="Resource_mry6s"]
 script = ExtResource("10_sax7m")
 all_stats = Dictionary[ExtResource("7_ndppw"), int]({
 ExtResource("4_y0q5b"): 3,
@@ -46,6 +46,6 @@ display_name = "Mage"
 hp = 50
 magic_resistance = 7
 speed = 9
-stats = SubResource("Resource_u8ghw")
+stats = SubResource("Resource_mry6s")
 skill_configs = Array[ExtResource("2_fodxj")]([SubResource("Resource_y0q5b")])
 metadata/_custom_type_script = "uid://by3x5xev328bq"
