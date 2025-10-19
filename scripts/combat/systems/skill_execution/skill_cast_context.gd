@@ -4,18 +4,14 @@ class_name SkillCastContext
 DTO para el contexto del casteo de un Skill
 """
 
-var all_characters: Array[Character]
 var caster: Character
-var custom_target: Character
 var skill: SkillConfig
 var dice_result: DiceResult
 var outcome_type: RollInterpreterSystem.RollOutcomeType
 
 
-func _init(all_characters_arg: Array[Character], caster_arg: Character, custom_target_arg: Character, skill_arg: SkillConfig) -> void:
-	all_characters = all_characters_arg
+func _init(caster_arg: Character, skill_arg: SkillConfig) -> void:
 	caster = caster_arg
-	custom_target = custom_target_arg
 	skill = skill_arg
 
 func print_roll() -> void:
@@ -25,7 +21,6 @@ func print_roll() -> void:
 	var rolls_info := "Rolls: [color='purple']%s[/color]" % [str(dice_result.rolls)]
 	var rolls_result_info := "Total: [color='purple']%s[/color]" % dice_result.total
 	var outcome_info := "Outcome type: [color='purple']%s[/color]" % EnumsHelper.enum_to_string(RollInterpreterSystem.RollOutcomeType, outcome_type)
-	var targets_info := "Targets: [color='red']%s[/color]" % custom_target._config.display_name if custom_target != null else "NO CUSTOM TARGET"
 	
 	print(" ------------------- ROLL LANZADO ------------------- ")
 	print_rich(
@@ -34,7 +29,6 @@ func print_roll() -> void:
 		dice_info + "\n" +
 		rolls_info + "\n" +
 		rolls_result_info + "\n" +
-		outcome_info + "\n" +
-		targets_info
+		outcome_info,
 	)
 	print(" ------------------- /ROLL LANZADO ------------------- ")

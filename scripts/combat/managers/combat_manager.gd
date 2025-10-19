@@ -42,10 +42,20 @@ func _roll_pressed() -> void:
 	if _current_skill == null:
 		return
 	
-	SkillExecutionSystem.execute_skill(_current_skill, _resolve_skill_context())
+	if _current_skill.requires_target_selection() && _current_custom_target == null:
+		print_rich("[color='red']REQUIRES CUSTOM TARGETTING!!![/color]")
+		return
+	
+	_execute_skill()
 
-func _resolve_skill_context() -> SkillCastContext:
-	var skill_context := SkillCastContext.new(_all_characters, _current_character, _current_custom_target, _current_skill)
+func _execute_skill() -> void:
+	var skill_targets_context := SkillTargetsContext.new(_all_characters, _current_custom_target)
+	var skill_cast_context: SkillCastContext = _resolve_skill_cast_context()
+	
+	SkillExecutionSystem.execute_skill(_current_skill, skill_targets_context, skill_cast_context)
+
+func _resolve_skill_cast_context() -> SkillCastContext:
+	var skill_context := SkillCastContext.new(_current_character, _current_skill)
 	
 	skill_context.dice_result = DiceSystem.roll(_current_skill.dice_config, _current_skill.roll_stat_modifier, _current_character)
 	skill_context.outcome_type = RollInterpreterSystem.resolve_outcome(skill_context.dice_result.total, _current_skill.dice_config)

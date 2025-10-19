@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://kviba886ut6t"]
+[gd_scene load_steps=14 format=3 uid="uid://kviba886ut6t"]
 
 [ext_resource type="Script" uid="uid://ct3iq4lp3e4vo" path="res://scripts/combat/combat.gd" id="1_5vqsm"]
 [ext_resource type="PackedScene" uid="uid://bul2u0tjanic8" path="res://scenes/character/character.tscn" id="2_6aonj"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://dvk8usg7r176v" path="res://art/backgrounds/field.png" id="4_gwckk"]
 [ext_resource type="Script" uid="uid://bbjbgjlir05uj" path="res://scripts/combat/ui/skills_container_ui.gd" id="5_4voa6"]
 [ext_resource type="Texture2D" uid="uid://co8a1556ekfpw" path="res://art/menu_backgrounds/tile_0001.png" id="5_jgg25"]
+[ext_resource type="Theme" uid="uid://wevxpxcb13ug" path="res://art/themes/custom_theme.tres" id="5_mrrmw"]
 [ext_resource type="Resource" uid="uid://u30vo2vcqnyx" path="res://configs/character/instances/heroes/mage_config.tres" id="6_4a6i5"]
 [ext_resource type="Script" uid="uid://2opohag5bnan" path="res://scripts/combat/ui/roll_button_ui.gd" id="11_3dmww"]
 [ext_resource type="Script" uid="uid://2p1loj53mqs6" path="res://scripts/combat/ui/end_turn_button_ui.gd" id="11_gwckk"]
@@ -43,6 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("5_mrrmw")
 
 [node name="Characters" type="HBoxContainer" parent="CanvasLayer/HUD"]
 layout_mode = 1
@@ -88,6 +90,7 @@ offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 1
+theme = ExtResource("5_mrrmw")
 
 [node name="Background" type="NinePatchRect" parent="CanvasLayer/Skills"]
 layout_mode = 1

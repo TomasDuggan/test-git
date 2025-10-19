@@ -23,6 +23,7 @@ metadata/_custom_type_script = "uid://chu3wno85ljhm"
 [sub_resource type="Resource" id="Resource_bveeg"]
 script = ExtResource("8_0ehpy")
 hp_amount = 5
+trigger_outcome = 1
 target_scope = 1
 metadata/_custom_type_script = "uid://dr5qvj20hii80"
 
