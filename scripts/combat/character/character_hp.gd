@@ -22,8 +22,8 @@ func initialize(hp: int, armor: int, mr: int) -> void:
 	
 	_hp_bar.update_hp_bar(_current_hp, _max_hp)
 
-func receive_damage(_source: Character, damage: int) -> int:
-	var total_damage_done := damage
+func receive_damage(info: DamageInfo) -> int:
+	var total_damage_done := info.damage
 	
 	_current_hp = max(_current_hp - total_damage_done, 0)
 	

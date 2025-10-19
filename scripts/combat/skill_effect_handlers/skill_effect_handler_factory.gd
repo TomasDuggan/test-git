@@ -8,6 +8,8 @@ static func new_skill_effect_handler(type: SkillEffectConfig.SkillEffectType) ->
 			return DamageSkillEffectHandler.new()
 		SkillEffectConfig.SkillEffectType.HEAL:
 			return HealSkillEffectHandler.new()
+		SkillEffectConfig.SkillEffectType.APPLY_STATUS_EFFECT:
+			return ApplyStatusEffectSkillEffectHandler.new()
 		_:
-			push_error("No deberia llegar aca!!! Handler no encontrado para el type " + EnumsHelper.enum_to_string(SkillEffectConfig.SkillEffectType, type))
+			push_error("Handler no encontrado para el type " + EnumsHelper.enum_to_string(SkillEffectConfig.SkillEffectType, type))
 			return null

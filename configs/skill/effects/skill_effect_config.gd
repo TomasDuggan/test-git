@@ -15,4 +15,5 @@ func get_effect_type() -> SkillEffectType
 enum SkillEffectType {
 	DAMAGE,
 	HEAL,
+	APPLY_STATUS_EFFECT,
 }

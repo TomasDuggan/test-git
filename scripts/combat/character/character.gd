@@ -5,6 +5,7 @@ class_name Character
 @onready var _hp: CharacterHP = $HP
 
 var _stats: CharacterStats
+var _status_effect_manager: CharacterStatusEffects
 
 
 func _gui_input(event: InputEvent):
@@ -15,12 +16,13 @@ func _gui_input(event: InputEvent):
 func _ready():
 	_hp.initialize(_config.hp, _config.armor, _config.magic_resistance)
 	_stats = CharacterStats.new(_config.stats)
+	_status_effect_manager = CharacterStatusEffects.new(self)
 
 func start_turn() -> void:
-	pass
+	_status_effect_manager.turn_started()
 
 func end_turn() -> void:
-	pass
+	_status_effect_manager.turn_ended()
 
 func get_skill_configs() -> Array[SkillConfig]:
 	return _config.skill_configs
@@ -32,6 +34,9 @@ func get_stats() -> CharacterStats:
 # Facade
 func get_hp() -> CharacterHP:
 	return _hp
+
+func get_status_effects() -> CharacterStatusEffects:
+	return _status_effect_manager
 
 func is_hero() -> bool:
 	return _config.is_hero

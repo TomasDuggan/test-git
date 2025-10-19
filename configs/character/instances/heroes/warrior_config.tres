@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=18 format=3 uid="uid://b3a5e33ydueoi"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=23 format=3 uid="uid://b3a5e33ydueoi"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_06126"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_qsmnq"]
@@ -8,10 +8,13 @@
 [ext_resource type="Script" uid="uid://chu3wno85ljhm" path="res://configs/skill/effects/damage_skill_effect_config.gd" id="4_qsmnq"]
 [ext_resource type="Resource" uid="uid://s52ip5rmkm8g" path="res://configs/stats/instances/STR_stat_config.tres" id="5_bveeg"]
 [ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="6_vsvju"]
+[ext_resource type="Script" uid="uid://b4bmjego7lymm" path="res://configs/skill/effects/apply_status_skill_effect_config.gd" id="7_00up1"]
 [ext_resource type="Script" uid="uid://bq7p4705qxjxj" path="res://configs/skill/recoils/skill_recoil_config.gd" id="7_fn4su"]
 [ext_resource type="Resource" uid="uid://pdqtg5p4bpst" path="res://configs/stats/instances/INT_stat_config.tres" id="7_wpr6j"]
 [ext_resource type="Script" uid="uid://dr5qvj20hii80" path="res://configs/skill/recoils/lose_hp_skill_recoil_config.gd" id="8_0ehpy"]
 [ext_resource type="Resource" uid="uid://g5su7bnt8cv" path="res://configs/stats/instances/DEX_stat_config.tres" id="8_00up1"]
+[ext_resource type="Script" uid="uid://c1eyibhmb1bhx" path="res://configs/status_effect/status_effect_config.gd" id="8_ownuh"]
+[ext_resource type="Script" uid="uid://ddow0juot6lv0" path="res://configs/status_effect/bleed_status_effect_config.gd" id="9_4v0dk"]
 [ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="9_ownuh"]
 
 [sub_resource type="Resource" id="Resource_fn4su"]
@@ -19,6 +22,17 @@ script = ExtResource("4_qsmnq")
 damage = 15
 scaling_stat = ExtResource("5_bveeg")
 metadata/_custom_type_script = "uid://chu3wno85ljhm"
+
+[sub_resource type="Resource" id="Resource_dtr3s"]
+script = ExtResource("9_4v0dk")
+damage_per_turn = 5
+turns_duration = 3
+metadata/_custom_type_script = "uid://ddow0juot6lv0"
+
+[sub_resource type="Resource" id="Resource_kldn8"]
+script = ExtResource("7_00up1")
+statuses = Array[ExtResource("8_ownuh")]([SubResource("Resource_dtr3s")])
+metadata/_custom_type_script = "uid://b4bmjego7lymm"
 
 [sub_resource type="Resource" id="Resource_bveeg"]
 script = ExtResource("8_0ehpy")
@@ -34,7 +48,7 @@ desc = "Hits single enemy"
 icon = ExtResource("4_0ehpy")
 dice_config = ExtResource("3_bveeg")
 roll_stat_modifier = ExtResource("5_bveeg")
-effect_configs = Array[ExtResource("3_fn4su")]([SubResource("Resource_fn4su")])
+effect_configs = Array[ExtResource("3_fn4su")]([SubResource("Resource_fn4su"), SubResource("Resource_kldn8")])
 recoil_configs = Array[ExtResource("7_fn4su")]([SubResource("Resource_bveeg")])
 amount_of_targets = 1
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
