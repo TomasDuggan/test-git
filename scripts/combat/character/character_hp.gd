@@ -22,8 +22,10 @@ func initialize(hp: int, armor: int, mr: int) -> void:
 	
 	_hp_bar.update_hp_bar(_current_hp, _max_hp)
 
-func receive_damage(_source: Character, damage: int) -> void:
-	_current_hp = max(_current_hp - damage, 0)
+func receive_damage(_source: Character, damage: int) -> int:
+	var total_damage_done := damage
+	
+	_current_hp = max(_current_hp - total_damage_done, 0)
 	
 	if _current_hp == 0:
 		died.emit()
@@ -31,11 +33,17 @@ func receive_damage(_source: Character, damage: int) -> void:
 		damage_received.emit()
 	
 	_hp_bar.update_hp_bar(_current_hp, _max_hp)
+	
+	return total_damage_done
 
-func heal(heal_amount: int) -> void:
-	_current_hp = min(_current_hp + heal_amount, _max_hp)
+func heal(heal_amount: int) -> int:
+	var total_heal_done := heal_amount
+	
+	_current_hp = min(_current_hp + total_heal_done, _max_hp)
 	_hp_bar.update_hp_bar(_current_hp, _max_hp)
 	healed.emit()
+	
+	return total_heal_done
 
 
 #

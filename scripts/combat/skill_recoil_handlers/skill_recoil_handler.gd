@@ -6,4 +6,4 @@ Los Skills pueden pegar 'culatazos' dependiendo el RollInterpreterSystem.RollOut
 """
 
 @abstract
-func handle(config: SkillRecoilConfig, cast_context: SkillCastContext, execution_context: SkillExecutionContext) -> void
+func handle(config: SkillRecoilConfig, targets: Array[Character], cast_context: SkillCastContext, execution_context: SkillExecutionContext) -> void

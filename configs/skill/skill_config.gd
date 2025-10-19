@@ -16,5 +16,5 @@ class_name SkillConfig
 
 func requires_target_selection() -> bool:
 	return effect_configs.any(func(e: SkillEffectConfig): 
-		return e.target_scope == SkillEffectConfig.TargetScope.CUSTOM_SELECTION
+		return e.target_scope == SkillExecutionSystem.TargetScope.CUSTOM_SELECTION
 	)
