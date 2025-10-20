@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=21 format=3 uid="uid://1rsqk4e052kl"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=19 format=3 uid="uid://1rsqk4e052kl"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_8c44a"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_np4wf"]
@@ -11,40 +11,29 @@
 [ext_resource type="Resource" uid="uid://pdqtg5p4bpst" path="res://configs/stats/instances/INT_stat_config.tres" id="6_g1s1k"]
 [ext_resource type="Script" uid="uid://c1eyibhmb1bhx" path="res://configs/status_effect/status_effect_config.gd" id="6_vx2qn"]
 [ext_resource type="Resource" uid="uid://g5su7bnt8cv" path="res://configs/stats/instances/DEX_stat_config.tres" id="7_6ddos"]
-[ext_resource type="Script" uid="uid://ddow0juot6lv0" path="res://configs/status_effect/bleed_status_effect_config.gd" id="7_y6kku"]
+[ext_resource type="Script" uid="uid://knlhwlai537k" path="res://configs/status_effect/dodge_status_effect_config.gd" id="7_wequ5"]
 [ext_resource type="Texture2D" uid="uid://doodbflve1sfi" path="res://art/skills/gear.png" id="8_huouy"]
 [ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="8_s4hsu"]
-[ext_resource type="Script" uid="uid://dr5qvj20hii80" path="res://configs/skill/recoils/lose_hp_skill_recoil_config.gd" id="10_huouy"]
 
-[sub_resource type="Resource" id="Resource_44ro5"]
-script = ExtResource("7_y6kku")
-damage_per_turn = 5
+[sub_resource type="Resource" id="Resource_huouy"]
+script = ExtResource("7_wequ5")
 stacks = 3
-metadata/_custom_type_script = "uid://ddow0juot6lv0"
+metadata/_custom_type_script = "uid://knlhwlai537k"
 
 [sub_resource type="Resource" id="Resource_h3peq"]
 script = ExtResource("5_huouy")
-statuses = Array[ExtResource("6_vx2qn")]([SubResource("Resource_44ro5")])
-metadata/_custom_type_script = "uid://b4bmjego7lymm"
-
-[sub_resource type="Resource" id="Resource_vx2qn"]
-script = ExtResource("10_huouy")
-hp_amount = 5
-pierce_armor = true
-pierce_mr = true
-trigger_outcome = 1
+statuses = Array[ExtResource("6_vx2qn")]([SubResource("Resource_huouy")])
 target_scope = 1
-metadata/_custom_type_script = "uid://dr5qvj20hii80"
+metadata/_custom_type_script = "uid://b4bmjego7lymm"
 
 [sub_resource type="Resource" id="Resource_8c44a"]
 script = ExtResource("2_np4wf")
-display_name = "Enemy slash"
-desc = "Enemy hit"
+display_name = "Enemy Dodge"
+desc = "Dodge!"
 icon = ExtResource("8_huouy")
 dice_config = ExtResource("3_wequ5")
-roll_stat_modifier = ExtResource("5_e88yr")
+roll_stat_modifier = ExtResource("7_6ddos")
 effect_configs = Array[ExtResource("3_np4wf")]([SubResource("Resource_h3peq")])
-recoil_configs = Array[ExtResource("4_spm0n")]([SubResource("Resource_vx2qn")])
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
 [sub_resource type="Resource" id="Resource_npyhs"]

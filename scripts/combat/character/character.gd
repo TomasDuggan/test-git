@@ -25,7 +25,7 @@ func _ready():
 	_status_effect_manager = CharacterStatusEffects.new(self)
 
 func start_turn() -> void:
-	if _status_effect_manager.can_act():
+	if !_status_effect_manager.can_act():
 		print_rich("[color='red']%s has a status that prevents him from acting![/color]" % _config.display_name)
 		force_end_turn.emit()
 	
@@ -62,6 +62,7 @@ func do_apply_status_effect(target: Character, config: StatusEffectConfig) -> vo
 
 #region Reactions
 func receive_damage(info: DamageInfo) -> int:
+	_status_effect_manager.receiving_damage(info)
 	return _hp.receive_damage(info)
 
 func receive_heal(heal_amount: int) -> int:

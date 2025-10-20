@@ -8,6 +8,8 @@ var _active_character: Character
 var _current_turn := 0
 var _current_round := 0
 
+const TIME_BETWEEN_TURNS_DELAY := 1.0
+
 
 func _ready():
 	CombatEventBus.combat_started.connect(_on_combat_started)
@@ -23,6 +25,8 @@ func _on_combat_started(characters: Array[Character]) -> void:
 	_next_turn()
 
 func _next_turn() -> void:
+	#await get_tree().create_timer(TIME_BETWEEN_TURNS_DELAY).timeout
+	
 	_current_turn += 1
 	
 	if _remaining_characters.is_empty():

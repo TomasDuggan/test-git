@@ -26,12 +26,12 @@ func get_stacks() -> int:
 	return stacks
 
 func consume_stack() -> void:
-	if config.is_permanent:
-		return
-	
 	stacks -= 1
 	if stacks == 0:
 		effect_ended.emit(config)
+
+func is_positive() -> bool:
+	return config.is_positive()
 
 @abstract
 func on_status_reapplied(new_config: StatusEffectConfig) -> void
@@ -47,6 +47,12 @@ func on_turn_started() -> void:
 	pass
 
 func on_turn_ended() -> void:
+	pass
+
+func on_doing_damage(_info: DamageInfo) -> void:
+	pass
+
+func on_receiving_damage(_info: DamageInfo) -> void:
 	pass
 #endregion
 

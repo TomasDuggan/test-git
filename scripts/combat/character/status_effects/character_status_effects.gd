@@ -4,7 +4,7 @@ class_name CharacterStatusEffects
 Manejador de Status Effects de un Character
 """
 
-enum StatusType { BLEED, POISON, STUN }
+enum StatusType { BLEED, POISON, STUN, DODGE, }
 
 var _character: Character
 var _applied_statuses_by_type: Dictionary[StatusType, StatusEffect] = {}
@@ -14,12 +14,13 @@ func _init(character: Character) -> void:
 	_character = character
 
 func add_status_effect(config: StatusEffectConfig) -> void:
-	var status: StatusEffect = _applied_statuses_by_type.get(config.get_type(), null)
+	var applied_status: StatusEffect = _applied_statuses_by_type.get(config.get_type(), null)
 	
-	if status == null:
+	if applied_status == null:
 		_create_status_effect(config)
+		_sort_positives_first()
 	else:
-		status.on_status_reapplied(config)
+		applied_status.on_status_reapplied(config)
 
 func _create_status_effect(config: StatusEffectConfig) -> void:
 	var type: StatusType = config.get_type()
@@ -45,12 +46,18 @@ func turn_ended() -> void:
 		status.on_turn_ended()
 
 func can_act() -> bool:
-	return _applied_statuses_by_type.values().any(func(s: StatusEffect):
-		return !s.can_act()
+	return _applied_statuses_by_type.values().all(func(status: StatusEffect):
+		return status.can_act()
 	)
 
+func receiving_damage(info: DamageInfo) -> void:
+	for status: StatusEffect in _applied_statuses_by_type.values():
+		status.on_receiving_damage(info)
 
-
+func _sort_positives_first() -> void:
+	_applied_statuses_by_type.values().sort_custom(func(a: StatusEffect, b: StatusEffect):
+		return a.is_positive() && !b.is_positive()
+	)
 
 
 #

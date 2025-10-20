@@ -4,6 +4,8 @@ class_name DamageInfo
 DTO para parametrizar un ataque
 """
 
+#enum DamageType { PHYSICAL, MAGICAL }
+
 var source: Character
 var damage: int
 var pierce_armor: bool

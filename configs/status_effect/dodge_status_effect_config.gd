@@ -1,9 +1,9 @@
 extends StatusEffectConfig
-class_name StunStatusEffectConfig
+class_name DodgeStatusEffectConfig
 
 
 func get_type() -> CharacterStatusEffects.StatusType:
-	return CharacterStatusEffects.StatusType.STUN
+	return CharacterStatusEffects.StatusType.DODGE
 
 func is_positive() -> bool:
-	return false
+	return true
