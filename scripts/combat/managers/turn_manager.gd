@@ -11,11 +11,14 @@ var _current_round := 0
 
 func _ready():
 	CombatEventBus.combat_started.connect(_on_combat_started)
-	CombatEventBus.end_turn_pressed.connect(_end_turn_pressed)
+	CombatEventBus.end_turn_pressed.connect(_end_turn)
 
 func _on_combat_started(characters: Array[Character]) -> void:
 	_all_characters = characters
 	_remaining_characters = characters.duplicate()
+	
+	for character: Character in characters:
+		character.force_end_turn.connect(_end_turn)
 	
 	_next_turn()
 
@@ -39,7 +42,7 @@ func _next_round() -> void:
 	_remaining_characters = _all_characters.duplicate()
 	_next_turn()
 
-func _end_turn_pressed() -> void:
+func _end_turn() -> void:
 	_active_character.end_turn()
 	CombatEventBus.raise_event_turn_ended(_active_character)
 	_next_turn()
@@ -57,7 +60,7 @@ func _find_fastest_character() -> Character:
 
 func _exit_tree():
 	CombatEventBus.combat_started.disconnect(_on_combat_started)
-	CombatEventBus.end_turn_pressed.disconnect(_end_turn_pressed)
+	CombatEventBus.end_turn_pressed.disconnect(_end_turn)
 
 
 

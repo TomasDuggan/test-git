@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=23 format=3 uid="uid://b3a5e33ydueoi"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=25 format=3 uid="uid://b3a5e33ydueoi"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_06126"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_qsmnq"]
@@ -14,8 +14,9 @@
 [ext_resource type="Script" uid="uid://dr5qvj20hii80" path="res://configs/skill/recoils/lose_hp_skill_recoil_config.gd" id="8_0ehpy"]
 [ext_resource type="Resource" uid="uid://g5su7bnt8cv" path="res://configs/stats/instances/DEX_stat_config.tres" id="8_00up1"]
 [ext_resource type="Script" uid="uid://c1eyibhmb1bhx" path="res://configs/status_effect/status_effect_config.gd" id="8_ownuh"]
-[ext_resource type="Script" uid="uid://ddow0juot6lv0" path="res://configs/status_effect/bleed_status_effect_config.gd" id="9_4v0dk"]
+[ext_resource type="Script" uid="uid://ddow0juot6lv0" path="res://configs/status_effect/bleed_status_effect_config.gd" id="9_00up1"]
 [ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="9_ownuh"]
+[ext_resource type="Script" uid="uid://cmuev5qcqwhgc" path="res://configs/status_effect/stun_status_effect_config.gd" id="10_ownuh"]
 
 [sub_resource type="Resource" id="Resource_fn4su"]
 script = ExtResource("4_qsmnq")
@@ -24,15 +25,19 @@ scaling_stat = ExtResource("5_bveeg")
 stat_scaling_multiplier = 0.2
 metadata/_custom_type_script = "uid://chu3wno85ljhm"
 
-[sub_resource type="Resource" id="Resource_dtr3s"]
-script = ExtResource("9_4v0dk")
-damage_per_turn = 5
-stacks = 3
+[sub_resource type="Resource" id="Resource_ownuh"]
+script = ExtResource("9_00up1")
+damage_per_turn = 3
+stacks = 2
 metadata/_custom_type_script = "uid://ddow0juot6lv0"
+
+[sub_resource type="Resource" id="Resource_4v0dk"]
+script = ExtResource("10_ownuh")
+metadata/_custom_type_script = "uid://cmuev5qcqwhgc"
 
 [sub_resource type="Resource" id="Resource_kldn8"]
 script = ExtResource("7_00up1")
-statuses = Array[ExtResource("8_ownuh")]([SubResource("Resource_dtr3s")])
+statuses = Array[ExtResource("8_ownuh")]([SubResource("Resource_ownuh"), SubResource("Resource_4v0dk")])
 metadata/_custom_type_script = "uid://b4bmjego7lymm"
 
 [sub_resource type="Resource" id="Resource_bveeg"]

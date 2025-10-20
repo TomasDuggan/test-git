@@ -8,9 +8,7 @@ var _bleed_config: BleedStatusEffectConfig
 var _damage_info: DamageInfo
 
 
-func initialize(character_arg: Character, config_arg: StatusEffectConfig) -> void:
-	super.initialize(character_arg, config_arg)
-	
+func on_applied() -> void:
 	_bleed_config = config as BleedStatusEffectConfig
 	_damage_info = DamageInfo.new(
 		character,
@@ -21,7 +19,7 @@ func initialize(character_arg: Character, config_arg: StatusEffectConfig) -> voi
 
 func on_turn_started() -> void:
 	character.receive_damage(_damage_info)
-	consume_stack()
+	super.consume_stack()
 
 func on_status_reapplied(new_config: StatusEffectConfig) -> void:
 	stacks += new_config.stacks

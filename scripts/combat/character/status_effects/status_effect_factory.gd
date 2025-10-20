@@ -6,6 +6,8 @@ static func new_status_effect(type: CharacterStatusEffects.StatusType) -> Status
 	match type:
 		CharacterStatusEffects.StatusType.BLEED:
 			return BleedStatusEffect.new()
+		CharacterStatusEffects.StatusType.STUN:
+			return StunStatusEffect.new()
 		_:
 			push_error("StatusEffectFactory. Status Effect type no encontrado: " + EnumsHelper.enum_to_string(CharacterStatusEffects.StatusType, type))
 			return null

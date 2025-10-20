@@ -3,12 +3,9 @@ extends Node
 Bus para la escena de Combate
 """
 
-# Logic
 signal combat_started(characters: Array[Character])
 signal turn_started(character: Character)
 signal turn_ended(character: Character)
-
-# UI
 signal character_selected(character: Character)
 signal skill_selected(skill_config: SkillConfig)
 signal roll_pressed()
