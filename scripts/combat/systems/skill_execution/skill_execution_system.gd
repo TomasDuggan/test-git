@@ -18,7 +18,8 @@ static func execute_skill(skill_config: SkillConfig, targets_context: SkillTarge
 	if RollInterpreterSystem.can_apply_skill_effects(cast_context.outcome_type):
 		_handle_skill_effects(skill_config.effect_configs, targets_context, cast_context, execution_context)
 	
-	_handle_recoil_effects(skill_config.recoil_configs, targets_context, cast_context, execution_context)
+	if RollInterpreterSystem.can_apply_skill_recoils(cast_context.outcome_type):
+		_handle_skill_effects(skill_config.recoil_configs, targets_context, cast_context, execution_context)
 
 static func _handle_skill_effects(effect_configs: Array[SkillEffectConfig], targets_context: SkillTargetsContext, cast_context: SkillCastContext, execution_context: SkillExecutionContext) -> void:
 	for skill_effect_config: SkillEffectConfig in effect_configs:
@@ -27,17 +28,6 @@ static func _handle_skill_effects(effect_configs: Array[SkillEffectConfig], targ
 		
 		handler.handle(skill_effect_config, targets, cast_context, execution_context)
 
-static func _handle_recoil_effects(recoil_configs: Array[SkillRecoilConfig], targets_context: SkillTargetsContext, cast_context: SkillCastContext, execution_context: SkillExecutionContext) -> void:
-	for skill_recoil_config: SkillRecoilConfig in _filter_recoils_by_outcome(recoil_configs, cast_context.outcome_type):
-		var handler: SkillRecoilHandler = SkillRecoilHandlerFactory.new_skill_recoil_handler(skill_recoil_config.get_recoil_type())
-		var targets: Array[Character] = SkillTargetsResolver.resolve_targets(skill_recoil_config.target_scope, cast_context.caster, targets_context)
-		
-		handler.handle(skill_recoil_config, targets, cast_context, execution_context)
-
-static func _filter_recoils_by_outcome(recoil_configs: Array[SkillRecoilConfig], outcome_type: RollInterpreterSystem.RollOutcomeType) -> Array[SkillRecoilConfig]:
-	return recoil_configs.filter(func(recoil_config: SkillRecoilConfig):
-		return recoil_config.trigger_outcome == outcome_type
-	)
 
 
 

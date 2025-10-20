@@ -21,6 +21,15 @@ enum RollOutcomeType {
 const PARTIAL_THRESHOLD := 0.5 # Mas del PARTIAL_THRESHOLD %
 const SUCCESS_THRESHOLD := 0.75 # Mas del SUCCESS_THRESHOLD %
 
+const APPLY_EFFECTS_OUTCOMES := [
+	RollOutcomeType.PARTIAL,
+	RollOutcomeType.SUCCESS,
+	RollOutcomeType.CRITICAL_SUCCESS
+]
+const APPLY_RECOILS_OUTCOMES := [
+	RollOutcomeType.CRITICAL_FAIL,
+	RollOutcomeType.FAIL,
+]
 
 static func resolve_outcome(roll_total: int, dice_config: DiceConfig) -> RollOutcomeType:
 	var min_roll: int = dice_config.amount_of_dice
@@ -41,7 +50,9 @@ static func resolve_outcome(roll_total: int, dice_config: DiceConfig) -> RollOut
 		return RollOutcomeType.FAIL
 
 static func can_apply_skill_effects(roll_outcome: RollOutcomeType) -> bool:
-	return roll_outcome != RollOutcomeType.FAIL
+	return APPLY_EFFECTS_OUTCOMES.has(roll_outcome)
 
+static func can_apply_skill_recoils(roll_outcome: RollOutcomeType) -> bool:
+	return APPLY_RECOILS_OUTCOMES.has(roll_outcome)
 
 #

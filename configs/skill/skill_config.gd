@@ -10,7 +10,7 @@ class_name SkillConfig
 @export var dice_config: DiceConfig
 @export var roll_stat_modifier: StatConfig
 @export var effect_configs: Array[SkillEffectConfig]
-@export var recoil_configs: Array[SkillRecoilConfig]
+@export var recoil_configs: Array[SkillEffectConfig]
 @export var amount_of_targets: int
 
 
