@@ -38,8 +38,11 @@ func update_status_effect_resistances(stats: CharacterStats) -> void:
 			upgrade, MIN_RESISTANCE, MAX_RESISTANCE
 		)
 
-func reduce_damage(damage: int, damage_type: DamageInfo.DamageType) -> int:
-	return damage - floor(damage * _damage_resistances.get(damage_type, 0.0))
+func receiving_damage(damage_info: DamageInfo) -> void:
+	var base_damage: int = damage_info.damage
+	var resistance: float = _damage_resistances.get(damage_info.damage_type, 0.0)
+	
+	damage_info.damage = base_damage - floor(base_damage * resistance)
 
 func can_apply_status(chance_to_apply: float, status_category: CharacterStatusEffects.StatusCategory) -> bool:
 	var resistance: float = _status_resistances.get(status_category, 0.0)

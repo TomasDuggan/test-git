@@ -44,8 +44,8 @@ func _update_by_int(int_points: int) -> void:
 
 func _update_by_dex(dex_points: int) -> void:
 	_speed = _base_speed + dex_points
-	_crit_chance = clamp(dex_points / 40.0, 0, 1) # Entre .25 y .45
-	_crit_mult = clamp(0, 0, 1) # TODO
+	_crit_chance = _base_crit_chance + clamp(dex_points / 40.0, 0, 1) # Entre .25 y .45
+	_crit_mult = _base_crit_mult + clamp(0, 0, 1) # TODO
 
 func get_speed() -> int:
 	return _speed
@@ -53,17 +53,20 @@ func get_speed() -> int:
 func is_faster_than(speed: int) -> bool:
 	return _speed > speed
 
-func get_damage(damage_type: DamageInfo.DamageType) -> int:
-	return _physical_damage if damage_type == DamageInfo.DamageType.PHYSICAL else _magical_damage
+func doing_damage(damage_info: DamageInfo) -> void:
+	var damage: int = _physical_damage if damage_info.damage_type == DamageInfo.DamageType.PHYSICAL else _magical_damage
+	
+	if _crit_chance > randf():
+		damage = floor(damage * _crit_mult)
+		damage_info.is_crit = true
+	
+	damage_info.damage += damage
 
-func get_crit_chance() -> float:
-	return _crit_chance
-
-func get_crit_mult() -> float:
-	return _crit_mult
-
-func get_evasion_chance() -> float:
-	return _evasion_chance
+func receiving_damage(damage_info: DamageInfo) -> void:
+	if _evasion_chance > randf():
+		damage_info.damage = 0
+		damage_info.is_evaded = true
+	
 
 
 

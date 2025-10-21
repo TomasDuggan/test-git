@@ -61,6 +61,7 @@ func _on_stats_changed() -> void:
 
 #region Actions
 func do_damage(target: Character, damage_info: DamageInfo) -> int:
+	_attributes.doing_damage(damage_info)
 	_status_effects.doing_damage(damage_info)
 	return target.receive_damage(damage_info)
 
@@ -73,6 +74,8 @@ func do_apply_status_effect(target: Character, config: StatusEffectConfig, extra
 
 #region Reactions
 func receive_damage(info: DamageInfo) -> int:
+	_attributes.receiving_damage(info)
+	_resistances.receiving_damage(info)
 	_status_effects.receiving_damage(info)
 	return _hp.receive_damage(info)
 

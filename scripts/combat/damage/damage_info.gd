@@ -10,6 +10,8 @@ var source: Character
 var damage: int
 var damage_type: DamageType
 var is_piercing: bool
+var is_crit: bool
+var is_evaded: bool
 
 
 func _init(source_arg: Character, damage_arg: int, damage_type_arg: DamageType, is_piercing_arg: bool):
@@ -17,3 +19,5 @@ func _init(source_arg: Character, damage_arg: int, damage_type_arg: DamageType, 
 	damage = damage_arg
 	damage_type = damage_type_arg
 	is_piercing = is_piercing_arg
+	is_crit = false
+	is_evaded = false
