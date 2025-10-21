@@ -83,6 +83,9 @@ func receive_heal(heal_amount: int) -> int:
 	return _hp.heal(heal_amount)
 
 func receive_status_effect(config: StatusEffectConfig, extra_stacks: int) -> void:
+	if !_resistances.can_receive_status_effect(config):
+		return
+	
 	_status_effects.add_status_effect(config, extra_stacks)
 #endregion
 
