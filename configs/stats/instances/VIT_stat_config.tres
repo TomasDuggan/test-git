@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatConfig" load_steps=2 format=3 uid="uid://nd8pnhb3v0uy"]
+
+[ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="1_y1vhb"]
+
+[resource]
+script = ExtResource("1_y1vhb")
+type = 3
+display_name = "Vitality"
+metadata/_custom_type_script = "uid://bxdxyhue2mt40"

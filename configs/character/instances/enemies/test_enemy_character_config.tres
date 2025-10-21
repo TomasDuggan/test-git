@@ -1,7 +1,9 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=18 format=3 uid="uid://1rsqk4e052kl"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=25 format=3 uid="uid://1rsqk4e052kl"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_8c44a"]
+[ext_resource type="Script" uid="uid://cdmslc764huak" path="res://configs/character/attributes/character_attributes_config.gd" id="1_huouy"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_np4wf"]
+[ext_resource type="Script" uid="uid://be0kq8uqpd7ur" path="res://configs/character/resistances/chracter_resistances_config.gd" id="2_vx2qn"]
 [ext_resource type="Script" uid="uid://bto7l8ty1bdpr" path="res://configs/skill/effects/skill_effect_config.gd" id="3_np4wf"]
 [ext_resource type="Resource" uid="uid://cofce78tosmjp" path="res://configs/dice/instances/dice_config_2d8.tres" id="3_wequ5"]
 [ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="4_fhxvt"]
@@ -13,6 +15,17 @@
 [ext_resource type="Script" uid="uid://knlhwlai537k" path="res://configs/status_effect/dodge_status_effect_config.gd" id="7_wequ5"]
 [ext_resource type="Texture2D" uid="uid://doodbflve1sfi" path="res://art/skills/gear.png" id="8_huouy"]
 [ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="8_s4hsu"]
+[ext_resource type="Resource" uid="uid://nd8pnhb3v0uy" path="res://configs/stats/instances/VIT_stat_config.tres" id="15_8bl3y"]
+[ext_resource type="Resource" uid="uid://cw6qt1818pml5" path="res://configs/stats/instances/WIS_stat_config.tres" id="16_44ro5"]
+[ext_resource type="Resource" uid="uid://ceyv5bcovpv4y" path="res://configs/stats/instances/AWE_stat_config.tres" id="17_h3peq"]
+
+[sub_resource type="Resource" id="Resource_y6kku"]
+script = ExtResource("1_huouy")
+metadata/_custom_type_script = "uid://cdmslc764huak"
+
+[sub_resource type="Resource" id="Resource_8bl3y"]
+script = ExtResource("2_vx2qn")
+metadata/_custom_type_script = "uid://be0kq8uqpd7ur"
 
 [sub_resource type="Resource" id="Resource_huouy"]
 script = ExtResource("7_wequ5")
@@ -35,13 +48,8 @@ roll_stat_modifier = ExtResource("7_6ddos")
 effect_configs = Array[ExtResource("3_np4wf")]([SubResource("Resource_h3peq")])
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
-[sub_resource type="Resource" id="Resource_npyhs"]
+[sub_resource type="Resource" id="Resource_4snlu"]
 script = ExtResource("8_s4hsu")
-all_stats = Dictionary[ExtResource("4_fhxvt"), int]({
-ExtResource("5_e88yr"): 3,
-ExtResource("6_g1s1k"): 4,
-ExtResource("7_6ddos"): 10
-})
 metadata/_custom_type_script = "uid://uve6uqxfi242"
 
 [resource]
@@ -49,6 +57,8 @@ script = ExtResource("1_8c44a")
 display_name = "Enemy 1"
 hp = 50
 speed = 5
-stats = SubResource("Resource_npyhs")
+stats = SubResource("Resource_4snlu")
+attributes = SubResource("Resource_y6kku")
+resistances = SubResource("Resource_8bl3y")
 skill_configs = Array[ExtResource("2_np4wf")]([SubResource("Resource_8c44a")])
 metadata/_custom_type_script = "uid://by3x5xev328bq"

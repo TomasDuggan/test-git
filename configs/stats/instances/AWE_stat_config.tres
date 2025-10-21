@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatConfig" load_steps=2 format=3 uid="uid://ceyv5bcovpv4y"]
+
+[ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="1_agg2s"]
+
+[resource]
+script = ExtResource("1_agg2s")
+type = 5
+display_name = "Awearness"
+metadata/_custom_type_script = "uid://bxdxyhue2mt40"

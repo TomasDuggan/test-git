@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatConfig" load_steps=2 format=3 uid="uid://cw6qt1818pml5"]
+
+[ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="1_lhxtu"]
+
+[resource]
+script = ExtResource("1_lhxtu")
+type = 4
+display_name = "Wisdom"
+metadata/_custom_type_script = "uid://bxdxyhue2mt40"

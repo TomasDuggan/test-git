@@ -2,8 +2,8 @@ extends Object
 class_name StatValue
 
 var config: StatConfig
-var amount: int
+var points: int
 
-func _init(config_arg: StatConfig, amount_arg: int) -> void:
+func _init(config_arg: StatConfig, points_arg: int) -> void:
 	config = config_arg
-	amount = amount_arg
+	points = points_arg
