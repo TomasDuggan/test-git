@@ -1,8 +1,7 @@
 extends StatusEffect
 class_name BleedStatusEffect
 
-const PIERCE_ARMOR := true
-const PIERCE_MR := true
+const PIERCE_RESISTANCES := true
 
 var _bleed_config: BleedStatusEffectConfig
 var _damage_info: DamageInfo
@@ -13,8 +12,8 @@ func on_applied() -> void:
 	_damage_info = DamageInfo.new(
 		character,
 		_bleed_config.damage_per_turn,
-		PIERCE_ARMOR,
-		PIERCE_MR
+		DamageInfo.DamageType.PHYSICAL,
+		PIERCE_RESISTANCES
 	)
 
 func on_turn_started() -> void:

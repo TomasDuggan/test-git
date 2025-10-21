@@ -7,5 +7,5 @@ class_name PoisonStatusEffectConfig
 func get_type() -> CharacterStatusEffects.StatusType:
 	return CharacterStatusEffects.StatusType.POISON
 
-func is_positive() -> bool:
-	return false
+func get_category() -> CharacterStatusEffects.StatusCategory:
+	return CharacterStatusEffects.StatusCategory.CORROSIVE

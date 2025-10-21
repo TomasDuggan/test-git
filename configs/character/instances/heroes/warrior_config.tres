@@ -18,9 +18,7 @@
 
 [sub_resource type="Resource" id="Resource_fn4su"]
 script = ExtResource("4_qsmnq")
-damage = 1
-scaling_stat = ExtResource("5_bveeg")
-stat_scaling_multiplier = 0.2
+damage = 5
 metadata/_custom_type_script = "uid://chu3wno85ljhm"
 
 [sub_resource type="Resource" id="Resource_ownuh"]

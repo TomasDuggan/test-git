@@ -13,7 +13,6 @@ class_name SkillConfig
 @export var recoil_configs: Array[SkillEffectConfig]
 @export var amount_of_targets: int
 
-
 func requires_target_selection() -> bool:
 	return effect_configs.any(func(e: SkillEffectConfig): 
 		return e.target_scope == SkillExecutionSystem.TargetScope.CUSTOM_SELECTION

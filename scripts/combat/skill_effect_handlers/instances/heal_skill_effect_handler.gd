@@ -6,10 +6,9 @@ func handle(config: SkillEffectConfig, targets: Array[Character], cast_context: 
 	var caster: Character = cast_context.caster
 	var heal_config := config as HealSkillEffectConfig
 	var heal_power: int = _get_heal_power(heal_config, execution_context.total_damage_done)
-	var scaled_heal: int = super.scale_effect_by_stat(caster, heal_power, config)
 	
 	for target: Character in targets:
-		execution_context.total_hp_healed += caster.do_healing(target, scaled_heal)
+		execution_context.total_hp_healed += caster.do_healing(target, heal_power)
 
 func _get_heal_power(heal_config: HealSkillEffectConfig, total_damage_done: int) -> int:
 	if heal_config.source_type == HealSkillEffectConfig.HealSource.FLAT:

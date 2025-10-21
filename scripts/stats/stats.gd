@@ -28,10 +28,6 @@ func get_roll_stat_modifier_value(stat_config: StatConfig) -> int:
 	var stat_value: float = float(get_stat_amount(stat_config))
 	return floor((stat_value - 10.0) / 2.0)
 
-func scale_effect_by_stat(base: Variant, effect_config: SkillEffectConfig) -> Variant:
-	var stat_amount: int = get_stat_amount(effect_config.scaling_stat)
-	return base + stat_amount * effect_config.stat_scaling_multiplier
-
 func get_stat_amount(stat_config: StatConfig) -> int:
 	return _get_stat(stat_config).amount
 

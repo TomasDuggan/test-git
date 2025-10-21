@@ -4,16 +4,16 @@ class_name DamageInfo
 DTO para parametrizar un ataque
 """
 
-#enum DamageType { PHYSICAL, MAGICAL }
+enum DamageType { PHYSICAL, MAGICAL }
 
 var source: Character
 var damage: int
-var pierce_armor: bool
-var pierce_mr: bool
+var damage_type: DamageType
+var is_piercing: bool
 
 
-func _init(source_arg: Character, damage_arg: int, pierce_armor_arg: bool, pierce_mr_arg: bool):
+func _init(source_arg: Character, damage_arg: int, damage_type_arg: DamageType, is_piercing_arg: bool):
 	source = source_arg
 	damage = damage_arg
-	pierce_armor = pierce_armor_arg
-	pierce_mr = pierce_mr_arg
+	damage_type = damage_type_arg
+	is_piercing = is_piercing_arg

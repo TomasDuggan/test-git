@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" uid="uid://cd8bv8mjnhtgo" path="res://scripts/combat/character/character.gd" id="1_cuyo6"]
 [ext_resource type="Texture2D" uid="uid://dxdwp3pkwvc14" path="res://icon.svg" id="2_mutn8"]
-[ext_resource type="Script" uid="uid://ciro7d2bl8bw8" path="res://scripts/combat/character/character_hp.gd" id="3_mutn8"]
-[ext_resource type="Script" uid="uid://g5bmrc4ojgjt" path="res://scripts/combat/character/character_hp_bar.gd" id="4_fgi2k"]
+[ext_resource type="Script" uid="uid://ciro7d2bl8bw8" path="res://scripts/combat/character/hp/character_hp.gd" id="3_mutn8"]
+[ext_resource type="Script" uid="uid://g5bmrc4ojgjt" path="res://scripts/combat/character/hp/character_hp_bar.gd" id="4_fgi2k"]
 
 [node name="Character" type="Control"]
 custom_minimum_size = Vector2(50, 50)

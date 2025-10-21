@@ -51,13 +51,14 @@ func get_speed() -> int:
 
 #region Actions
 func do_damage(target: Character, damage_info: DamageInfo) -> int:
+	_status_effect_manager.doing_damage(damage_info)
 	return target.receive_damage(damage_info)
 
 func do_healing(target: Character, heal_amount: int) -> int:
 	return target.receive_heal(heal_amount)
 
-func do_apply_status_effect(target: Character, config: StatusEffectConfig) -> void:
-	target.receive_status_effect(config)
+func do_apply_status_effect(target: Character, config: StatusEffectConfig, extra_stacks: int) -> void:
+	target.receive_status_effect(config, extra_stacks)
 #endregion
 
 #region Reactions
@@ -68,13 +69,13 @@ func receive_damage(info: DamageInfo) -> int:
 func receive_heal(heal_amount: int) -> int:
 	return _hp.heal(heal_amount)
 
-func receive_status_effect(config: StatusEffectConfig) -> void:
-	_status_effect_manager.add_status_effect(config)
+func receive_status_effect(config: StatusEffectConfig, extra_stacks: int) -> void:
+	_status_effect_manager.add_status_effect(config, extra_stacks)
 #endregion
 
 #region Stats Facade
-func scale_effect_by_stat(base: Variant, effect_config: SkillEffectConfig) -> Variant:
-	return _stats.scale_effect_by_stat(base, effect_config)
+func get_stat_amount(stat_config: StatConfig) -> int:
+	return _stats.get_stat_amount(stat_config)
 
 func get_roll_stat_modifier_value(stat_config: StatConfig) -> int:
 	return _stats.get_roll_stat_modifier_value(stat_config)

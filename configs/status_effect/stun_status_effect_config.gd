@@ -5,5 +5,5 @@ class_name StunStatusEffectConfig
 func get_type() -> CharacterStatusEffects.StatusType:
 	return CharacterStatusEffects.StatusType.STUN
 
-func is_positive() -> bool:
-	return false
+func get_category() -> CharacterStatusEffects.StatusCategory:
+	return CharacterStatusEffects.StatusCategory.CONTROL

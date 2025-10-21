@@ -12,10 +12,10 @@ var config: StatusEffectConfig
 var stacks: int
 
 
-func initialize(character_arg: Character, config_arg: StatusEffectConfig) -> void:
+func initialize(character_arg: Character, config_arg: StatusEffectConfig, extra_stacks: int) -> void:
 	character = character_arg
 	config = config_arg
-	stacks = config_arg.stacks
+	stacks = config_arg.stacks + extra_stacks
 	
 	on_applied()
 

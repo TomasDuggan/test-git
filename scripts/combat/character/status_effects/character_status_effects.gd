@@ -5,6 +5,7 @@ Manejador de Status Effects de un Character
 """
 
 enum StatusType { BLEED, POISON, STUN, DODGE, }
+enum StatusCategory { POSITIVE, ELEMENTAL, CORROSIVE, CONTROL }
 
 var _character: Character
 var _applied_statuses_by_type: Dictionary[StatusType, StatusEffect] = {}
@@ -13,20 +14,20 @@ var _applied_statuses_by_type: Dictionary[StatusType, StatusEffect] = {}
 func _init(character: Character) -> void:
 	_character = character
 
-func add_status_effect(config: StatusEffectConfig) -> void:
+func add_status_effect(config: StatusEffectConfig, extra_stacks: int) -> void:
 	var applied_status: StatusEffect = _applied_statuses_by_type.get(config.get_type(), null)
 	
 	if applied_status == null:
-		_create_status_effect(config)
+		_create_status_effect(config, extra_stacks)
 		_sort_positives_first()
 	else:
 		applied_status.on_status_reapplied(config)
 
-func _create_status_effect(config: StatusEffectConfig) -> void:
+func _create_status_effect(config: StatusEffectConfig, extra_stacks: int) -> void:
 	var type: StatusType = config.get_type()
 	var new_status: StatusEffect = StatusEffectFactory.new_status_effect(type)
 	
-	new_status.initialize(_character, config)
+	new_status.initialize(_character, config, extra_stacks)
 	new_status.effect_ended.connect(_remove_status_effect, CONNECT_ONE_SHOT)
 	_applied_statuses_by_type[type] = new_status
 
@@ -49,6 +50,10 @@ func can_act() -> bool:
 	return _applied_statuses_by_type.values().all(func(status: StatusEffect):
 		return status.can_act()
 	)
+
+func doing_damage(info: DamageInfo) -> void:
+	for status: StatusEffect in _applied_statuses_by_type.values():
+		status.on_doing_damage(info)
 
 func receiving_damage(info: DamageInfo) -> void:
 	for status: StatusEffect in _applied_statuses_by_type.values():
