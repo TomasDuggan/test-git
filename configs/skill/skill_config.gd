@@ -8,7 +8,7 @@ class_name SkillConfig
 
 @export_category("Logic")
 @export var dice_config: DiceConfig
-@export var roll_stat_modifier: StatConfig
+@export var roll_stat_modifier: StatConfig.StatType
 @export var effect_configs: Array[SkillEffectConfig]
 @export var recoil_configs: Array[SkillEffectConfig]
 @export var amount_of_targets: int

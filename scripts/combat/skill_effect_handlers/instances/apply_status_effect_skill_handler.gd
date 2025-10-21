@@ -15,6 +15,6 @@ func _get_extra_stacks(caster: Character, config: ApplyStatusSkillEffectConfig) 
 	if config.scaling_stat == null || config.stack_per_stat_point == 0:
 		return 0
 	
-	return caster.get_stat_points_by_config(config.scaling_stat) * config.stack_per_stat_point
+	return caster.get_stat_points_by_type(config.scaling_stat) * config.stack_per_stat_point
 
 #

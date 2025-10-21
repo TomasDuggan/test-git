@@ -23,6 +23,8 @@ func _gui_input(event: InputEvent):
 
 func _ready():
 	_stats = CharacterStats.new(_config)
+	_stats.stats_changed.connect(_on_stats_changed)
+	
 	_attributes = CharacterAttributes.new(_config.attributes, _stats)
 	_resistances = CharacterResistances.new(_config.resistances, _stats)
 	_hp.initialize(_config.hp)
@@ -53,6 +55,10 @@ func is_faster_than(speed: int) -> bool:
 func get_speed() -> int:
 	return _attributes.get_speed()
 
+func _on_stats_changed() -> void:
+	_attributes.update_attributes_by_stats(_stats)
+	_resistances.update_status_effect_resistances(_stats)
+
 #region Actions
 func do_damage(target: Character, damage_info: DamageInfo) -> int:
 	_status_effects.doing_damage(damage_info)
@@ -78,11 +84,11 @@ func receive_status_effect(config: StatusEffectConfig, extra_stacks: int) -> voi
 #endregion
 
 #region Stats Facade
-func get_stat_points_by_config(stat_config: StatConfig) -> int:
-	return _stats.get_stat_points_by_config(stat_config)
+func get_stat_points_by_type(stat_type: StatConfig.StatType) -> int:
+	return _stats.get_stat_points_by_config(stat_type)
 
-func get_roll_stat_modifier_value(stat_config: StatConfig) -> int:
-	return _stats.get_roll_stat_modifier_value(stat_config)
+func get_roll_stat_modifier_value(stat_type: StatConfig.StatType) -> int:
+	return _stats.get_roll_stat_modifier_value(stat_type)
 #endregion
 
 

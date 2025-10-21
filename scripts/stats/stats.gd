@@ -1,18 +1,33 @@
 extends Object
 class_name CharacterStats
 
+signal stats_changed()
+
 var _all_stats: Array[StatValue] = []
+
+const MIN_STAT_POINTS := 1
+const MAX_STAT_POINTS := 19
 
 
 func _init(character_config: CharacterConfig) -> void:
 	var stats: StatsConfig = character_config.stats
 	
-	for stat_config: StatConfig in stats.all_stats.keys():
-		var stat_value := StatValue.new(stat_config, stats.all_stats[stat_config])
+	for stat_type: StatConfig.StatType in stats.all_stats.keys():
+		var stat_value := StatValue.new(stat_type, stats.all_stats[stat_type])
 		_all_stats.append(stat_value)
 
 func get_all_stats() -> Array[StatValue]:
 	return _all_stats
+
+func alter_stat(type: StatConfig.StatType, modifier: int) -> void:
+	var current_points: int = _get_stat_by_type(type).points
+	_get_stat_by_type(type).points = clamp(
+		current_points + modifier,
+		MIN_STAT_POINTS,
+		MAX_STAT_POINTS
+	)
+	
+	stats_changed.emit()
 
 """
 Formula de D&D. Funciona bien si los stats base giran alrededor de 10.
@@ -27,27 +42,16 @@ Ej:
 16, 17 -> +3
 18, 19 -> +4
 """
-func get_roll_stat_modifier_value(stat_config: StatConfig) -> int:
-	var stat_value: float = float(get_stat_points_by_config(stat_config))
+func get_roll_stat_modifier_value(stat_type: StatConfig.StatType) -> int:
+	var stat_value: float = float(get_stat_points_by_type(stat_type))
 	return floor((stat_value - 10.0) / 2.0)
-
-func get_stat_points_by_config(stat_config: StatConfig) -> int:
-	return _get_stat_by_config(stat_config).points
 
 func get_stat_points_by_type(type: StatConfig.StatType) -> int:
 	return _get_stat_by_type(type).points
 
-func _get_stat_by_config(stat_config: StatConfig) -> StatValue:
-	for stat: StatValue in _all_stats:
-		if stat.config == stat_config:
-			return stat
-	
-	push_error("Todos los Characters deberian tener algun valor para todos los Stats.")
-	return null
-
 func _get_stat_by_type(type: StatConfig.StatType) -> StatValue:
 	for stat: StatValue in _all_stats:
-		if stat.config.type == type:
+		if stat.type == type:
 			return stat
 	
 	push_error("Todos los Characters deberian tener algun valor para todos los Stats.")

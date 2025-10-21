@@ -4,7 +4,7 @@ class_name DiceSystem
 Calcula el resultado de tirar los dados
 """
 
-static func roll(dice_config: DiceConfig, roll_stat_modifier: StatConfig, character: Character) -> DiceResult:
+static func roll(dice_config: DiceConfig, roll_stat_modifier: StatConfig.StatType, character: Character) -> DiceResult:
 	var rolls: Array[int] = []
 	
 	for i in range(dice_config.amount_of_dice):

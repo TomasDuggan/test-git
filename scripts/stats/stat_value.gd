@@ -1,9 +1,9 @@
 extends Object
 class_name StatValue
 
-var config: StatConfig
+var type: StatConfig.StatType
 var points: int
 
-func _init(config_arg: StatConfig, points_arg: int) -> void:
-	config = config_arg
+func _init(type_arg: StatConfig.StatType, points_arg: int) -> void:
+	type = type_arg
 	points = points_arg

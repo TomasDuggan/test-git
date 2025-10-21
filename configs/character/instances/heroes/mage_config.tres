@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=22 format=3 uid="uid://u30vo2vcqnyx"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=15 format=3 uid="uid://u30vo2vcqnyx"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_mt1ex"]
 [ext_resource type="Script" uid="uid://cdmslc764huak" path="res://configs/character/attributes/character_attributes_config.gd" id="1_y0q5b"]
@@ -7,15 +7,8 @@
 [ext_resource type="Script" uid="uid://bto7l8ty1bdpr" path="res://configs/skill/effects/skill_effect_config.gd" id="3_bh3vp"]
 [ext_resource type="Resource" uid="uid://cofce78tosmjp" path="res://configs/dice/instances/dice_config_2d8.tres" id="3_y0q5b"]
 [ext_resource type="Script" uid="uid://s8a5f26n6h3f" path="res://configs/skill/effects/heal_skill_effect_config.gd" id="4_mt1ex"]
-[ext_resource type="Resource" uid="uid://s52ip5rmkm8g" path="res://configs/stats/instances/STR_stat_config.tres" id="4_y0q5b"]
 [ext_resource type="Texture2D" uid="uid://cc8o4dmkn8o5c" path="res://art/skills/map.png" id="5_fodxj"]
-[ext_resource type="Script" uid="uid://bxdxyhue2mt40" path="res://configs/stats/stat_config.gd" id="7_ndppw"]
-[ext_resource type="Resource" uid="uid://pdqtg5p4bpst" path="res://configs/stats/instances/INT_stat_config.tres" id="8_n2lhs"]
-[ext_resource type="Resource" uid="uid://g5su7bnt8cv" path="res://configs/stats/instances/DEX_stat_config.tres" id="9_enkm4"]
 [ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="10_sax7m"]
-[ext_resource type="Resource" uid="uid://nd8pnhb3v0uy" path="res://configs/stats/instances/VIT_stat_config.tres" id="13_ndppw"]
-[ext_resource type="Resource" uid="uid://cw6qt1818pml5" path="res://configs/stats/instances/WIS_stat_config.tres" id="14_n2lhs"]
-[ext_resource type="Resource" uid="uid://ceyv5bcovpv4y" path="res://configs/stats/instances/AWE_stat_config.tres" id="15_enkm4"]
 
 [sub_resource type="Resource" id="Resource_mry6s"]
 script = ExtResource("1_y0q5b")
@@ -35,13 +28,20 @@ display_name = "Heal"
 desc = "Heals a target"
 icon = ExtResource("5_fodxj")
 dice_config = ExtResource("3_y0q5b")
-roll_stat_modifier = ExtResource("8_n2lhs")
 effect_configs = Array[ExtResource("3_bh3vp")]([SubResource("Resource_fodxj")])
 amount_of_targets = 1
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
-[sub_resource type="Resource" id="Resource_sax7m"]
+[sub_resource type="Resource" id="Resource_o4vg2"]
 script = ExtResource("10_sax7m")
+all_stats = Dictionary[int, int]({
+0: 0,
+1: 10,
+2: 0,
+3: 0,
+4: 8,
+5: 0
+})
 metadata/_custom_type_script = "uid://uve6uqxfi242"
 
 [resource]
@@ -49,8 +49,7 @@ script = ExtResource("1_mt1ex")
 is_hero = true
 display_name = "Mage"
 hp = 50
-speed = 9
-stats = SubResource("Resource_sax7m")
+stats = SubResource("Resource_o4vg2")
 attributes = SubResource("Resource_mry6s")
 resistances = SubResource("Resource_ndr1s")
 skill_configs = Array[ExtResource("2_fodxj")]([SubResource("Resource_y0q5b")])
