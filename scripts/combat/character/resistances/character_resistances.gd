@@ -39,6 +39,9 @@ func update_status_effect_resistances(stats: CharacterStats) -> void:
 		)
 
 func receiving_damage(damage_info: DamageInfo) -> void:
+	if damage_info.is_piercing:
+		return
+	
 	var base_damage: int = damage_info.damage
 	var resistance: float = _damage_resistances.get(damage_info.damage_type, 0.0)
 	

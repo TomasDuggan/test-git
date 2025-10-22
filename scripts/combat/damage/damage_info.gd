@@ -1,7 +1,8 @@
 extends Object
 class_name DamageInfo
 """
-DTO para parametrizar un ataque
+DTO para parametrizar un ataque.
+Va mutando a lo largo del flujo, siendo alterado por atributos, resistencias, status effects, etc.
 """
 
 enum DamageType { PHYSICAL, MAGICAL }

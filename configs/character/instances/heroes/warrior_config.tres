@@ -51,6 +51,7 @@ metadata/_custom_type_script = "uid://b4bmjego7lymm"
 [sub_resource type="Resource" id="Resource_wpr6j"]
 script = ExtResource("4_qsmnq")
 damage = 5
+pierce_resistances = true
 target_scope = 1
 metadata/_custom_type_script = "uid://chu3wno85ljhm"
 
@@ -62,7 +63,6 @@ icon = ExtResource("4_0ehpy")
 dice_config = ExtResource("3_bveeg")
 effect_configs = Array[ExtResource("3_fn4su")]([SubResource("Resource_fn4su"), SubResource("Resource_kldn8")])
 recoil_configs = Array[ExtResource("3_fn4su")]([SubResource("Resource_wpr6j")])
-amount_of_targets = 1
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
 [sub_resource type="Resource" id="Resource_bveeg"]

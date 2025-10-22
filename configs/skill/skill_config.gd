@@ -11,7 +11,6 @@ class_name SkillConfig
 @export var roll_stat_modifier: StatConfig.StatType
 @export var effect_configs: Array[SkillEffectConfig]
 @export var recoil_configs: Array[SkillEffectConfig]
-@export var amount_of_targets: int
 
 func requires_target_selection() -> bool:
 	return effect_configs.any(func(e: SkillEffectConfig): 
