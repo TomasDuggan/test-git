@@ -1,7 +1,7 @@
 extends Object
 class_name CharacterStats
 
-signal stats_changed()
+signal stats_changed() # TODO: emitir el StatValue que cambio
 
 var _all_stats: Array[StatValue] = []
 
@@ -44,7 +44,12 @@ Ej:
 """
 func get_roll_stat_modifier_value(stat_type: StatConfig.StatType) -> int:
 	var stat_value: float = float(get_stat_points_by_type(stat_type))
-	return floor((stat_value - 10.0) / 2.0)
+	var modifier: int = floor((stat_value - 10.0) / 2.0)
+	
+	# TODO: Borrar, es para debug en consola
+	print_rich("[color='green']%s ROLL MODIFIER: +%s[/color]" % [EnumsHelper.enum_to_string(StatConfig.StatType, stat_type), str(modifier)])
+	
+	return modifier
 
 func get_stat_points_by_type(type: StatConfig.StatType) -> int:
 	return _get_stat_by_type(type).points

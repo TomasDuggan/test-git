@@ -51,8 +51,9 @@ func _roll_pressed() -> void:
 func _execute_skill() -> void:
 	var skill_targets_context := SkillTargetsContext.new(_all_characters, _current_custom_target)
 	var skill_cast_context: SkillCastContext = _resolve_skill_cast_context()
+	var execution_system := SkillExecutionSystem.new(skill_targets_context, skill_cast_context)
 	
-	SkillExecutionSystem.execute_skill(_current_skill, skill_targets_context, skill_cast_context)
+	execution_system.execute_skill(_current_skill)
 
 func _resolve_skill_cast_context() -> SkillCastContext:
 	var skill_context := SkillCastContext.new(_current_character, _current_skill)

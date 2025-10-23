@@ -14,3 +14,8 @@ enum HealSource { FLAT, BY_DAMAGE_DONE }
 
 func get_effect_type() -> SkillEffectType:
 	return SkillEffectType.HEAL
+
+func get_description() -> String:
+	var scope_text: String = _get_target_scope_text()
+	
+	return "Heal %s for %d HP." % [scope_text, heal_amount]

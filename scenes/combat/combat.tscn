@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://kviba886ut6t"]
+[gd_scene load_steps=15 format=3 uid="uid://kviba886ut6t"]
 
 [ext_resource type="Script" uid="uid://ct3iq4lp3e4vo" path="res://scripts/combat/combat.gd" id="1_5vqsm"]
 [ext_resource type="PackedScene" uid="uid://bul2u0tjanic8" path="res://scenes/character/character.tscn" id="2_6aonj"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://u30vo2vcqnyx" path="res://configs/character/instances/heroes/mage_config.tres" id="6_4a6i5"]
 [ext_resource type="Script" uid="uid://2opohag5bnan" path="res://scripts/combat/ui/roll_button_ui.gd" id="11_3dmww"]
 [ext_resource type="Script" uid="uid://2p1loj53mqs6" path="res://scripts/combat/ui/end_turn_button_ui.gd" id="11_gwckk"]
+[ext_resource type="Script" uid="uid://ex5viwnsen17" path="res://scripts/combat/ui/drawback_picker/drawbacks_picker_ui.gd" id="14_h2sm1"]
 
 [node name="Combat" type="Node2D"]
 script = ExtResource("1_5vqsm")
@@ -144,6 +145,59 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "End Turn"
 script = ExtResource("11_gwckk")
+
+[node name="DrawbacksPicker" type="Control" parent="CanvasLayer" node_paths=PackedStringArray("_drawbacks_container")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("5_mrrmw")
+script = ExtResource("14_h2sm1")
+_drawbacks_container = NodePath("Container/MarginContainer/ListContainer")
+
+[node name="Container" type="Control" parent="CanvasLayer/DrawbacksPicker"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -250.0
+offset_right = 250.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="NinePatchRect" parent="CanvasLayer/DrawbacksPicker/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_jgg25")
+patch_margin_left = 10
+patch_margin_top = 8
+patch_margin_right = 11
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/DrawbacksPicker/Container"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="ListContainer" type="VBoxContainer" parent="CanvasLayer/DrawbacksPicker/Container/MarginContainer"]
+layout_mode = 2
 
 [connection signal="pressed" from="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/RollButton" to="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/RollButton" method="_on_pressed"]
 [connection signal="pressed" from="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/EndTurnButton" to="CanvasLayer/Skills/MarginContainer/Actions/VBoxContainer/EndTurnButton" method="_on_pressed"]

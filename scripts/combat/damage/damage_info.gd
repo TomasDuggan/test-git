@@ -22,3 +22,13 @@ func _init(source_arg: Character, damage_arg: int, damage_type_arg: DamageType, 
 	is_piercing = is_piercing_arg
 	is_crit = false
 	is_evaded = false
+
+static func get_damage_type_text(damage_type_arg: DamageType) -> String:
+	return "physical" if damage_type_arg == DamageType.PHYSICAL else "magical"
+
+
+
+
+
+
+#

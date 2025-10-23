@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=18 format=3 uid="uid://1rsqk4e052kl"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=33 format=3 uid="uid://1rsqk4e052kl"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_8c44a"]
 [ext_resource type="Script" uid="uid://cdmslc764huak" path="res://configs/character/attributes/character_attributes_config.gd" id="1_huouy"]
@@ -8,9 +8,12 @@
 [ext_resource type="Resource" uid="uid://cofce78tosmjp" path="res://configs/dice/instances/dice_config_2d8.tres" id="3_wequ5"]
 [ext_resource type="Script" uid="uid://b4bmjego7lymm" path="res://configs/skill/effects/apply_status_skill_effect_config.gd" id="5_huouy"]
 [ext_resource type="Script" uid="uid://c1eyibhmb1bhx" path="res://configs/status_effect/status_effect_config.gd" id="6_vx2qn"]
+[ext_resource type="Script" uid="uid://cxt6d23n3m2rl" path="res://configs/skill/skill_outcome_config.gd" id="7_ci68t"]
 [ext_resource type="Script" uid="uid://knlhwlai537k" path="res://configs/status_effect/dodge_status_effect_config.gd" id="7_wequ5"]
 [ext_resource type="Texture2D" uid="uid://doodbflve1sfi" path="res://art/skills/gear.png" id="8_huouy"]
 [ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="8_s4hsu"]
+[ext_resource type="Script" uid="uid://cmuev5qcqwhgc" path="res://configs/status_effect/stun_status_effect_config.gd" id="11_wequ5"]
+[ext_resource type="Script" uid="uid://ddow0juot6lv0" path="res://configs/status_effect/bleed_status_effect_config.gd" id="13_huouy"]
 
 [sub_resource type="Resource" id="Resource_y6kku"]
 script = ExtResource("1_huouy")
@@ -20,25 +23,94 @@ metadata/_custom_type_script = "uid://cdmslc764huak"
 script = ExtResource("2_vx2qn")
 metadata/_custom_type_script = "uid://be0kq8uqpd7ur"
 
-[sub_resource type="Resource" id="Resource_huouy"]
-script = ExtResource("7_wequ5")
-stacks = 3
-metadata/_custom_type_script = "uid://knlhwlai537k"
+[sub_resource type="Resource" id="Resource_vx2qn"]
+script = ExtResource("11_wequ5")
+metadata/_custom_type_script = "uid://cmuev5qcqwhgc"
 
-[sub_resource type="Resource" id="Resource_h3peq"]
+[sub_resource type="Resource" id="Resource_44ro5"]
 script = ExtResource("5_huouy")
-statuses = Array[ExtResource("6_vx2qn")]([SubResource("Resource_huouy")])
+statuses = Array[ExtResource("6_vx2qn")]([SubResource("Resource_vx2qn")])
+is_negative = true
 target_scope = 1
 metadata/_custom_type_script = "uid://b4bmjego7lymm"
 
+[sub_resource type="Resource" id="Resource_h3peq"]
+script = ExtResource("7_ci68t")
+effects = Array[ExtResource("3_np4wf")]([SubResource("Resource_44ro5")])
+metadata/_custom_type_script = "uid://cxt6d23n3m2rl"
+
+[sub_resource type="Resource" id="Resource_h2ntm"]
+script = ExtResource("7_wequ5")
+metadata/_custom_type_script = "uid://knlhwlai537k"
+
+[sub_resource type="Resource" id="Resource_y2upp"]
+script = ExtResource("5_huouy")
+statuses = Array[ExtResource("6_vx2qn")]([SubResource("Resource_h2ntm")])
+target_scope = 1
+metadata/_custom_type_script = "uid://b4bmjego7lymm"
+
+[sub_resource type="Resource" id="Resource_1ubyk"]
+script = ExtResource("13_huouy")
+damage_per_turn = 5
+stacks = 2
+metadata/_custom_type_script = "uid://ddow0juot6lv0"
+
+[sub_resource type="Resource" id="Resource_6pg0a"]
+script = ExtResource("5_huouy")
+statuses = Array[ExtResource("6_vx2qn")]([SubResource("Resource_1ubyk")])
+is_negative = true
+target_scope = 1
+metadata/_custom_type_script = "uid://b4bmjego7lymm"
+
+[sub_resource type="Resource" id="Resource_5xgwf"]
+script = ExtResource("7_ci68t")
+effects = Array[ExtResource("3_np4wf")]([SubResource("Resource_y2upp"), SubResource("Resource_6pg0a")])
+metadata/_custom_type_script = "uid://cxt6d23n3m2rl"
+
+[sub_resource type="Resource" id="Resource_cwli1"]
+script = ExtResource("7_wequ5")
+metadata/_custom_type_script = "uid://knlhwlai537k"
+
+[sub_resource type="Resource" id="Resource_bu3t5"]
+script = ExtResource("5_huouy")
+statuses = Array[ExtResource("6_vx2qn")]([SubResource("Resource_cwli1")])
+target_scope = 1
+metadata/_custom_type_script = "uid://b4bmjego7lymm"
+
+[sub_resource type="Resource" id="Resource_oqwmt"]
+script = ExtResource("7_ci68t")
+effects = Array[ExtResource("3_np4wf")]([SubResource("Resource_bu3t5")])
+metadata/_custom_type_script = "uid://cxt6d23n3m2rl"
+
+[sub_resource type="Resource" id="Resource_l8k5c"]
+script = ExtResource("7_wequ5")
+stacks = 2
+metadata/_custom_type_script = "uid://knlhwlai537k"
+
+[sub_resource type="Resource" id="Resource_1ock4"]
+script = ExtResource("5_huouy")
+statuses = Array[ExtResource("6_vx2qn")]([SubResource("Resource_l8k5c")])
+target_scope = 1
+metadata/_custom_type_script = "uid://b4bmjego7lymm"
+
+[sub_resource type="Resource" id="Resource_5vvwx"]
+script = ExtResource("7_ci68t")
+effects = Array[ExtResource("3_np4wf")]([SubResource("Resource_1ock4")])
+metadata/_custom_type_script = "uid://cxt6d23n3m2rl"
+
 [sub_resource type="Resource" id="Resource_8c44a"]
 script = ExtResource("2_np4wf")
-display_name = "Enemy Dodge"
-desc = "Dodge!"
+display_name = "Dodge"
+desc = "When you prepare yourself to dodge a future attack, roll +DEX"
 icon = ExtResource("8_huouy")
 dice_config = ExtResource("3_wequ5")
-roll_stat_modifier = 2
-effect_configs = Array[ExtResource("3_np4wf")]([SubResource("Resource_h3peq")])
+roll_stat_modifier = 5
+outcome_configs = Dictionary[int, ExtResource("7_ci68t")]({
+0: SubResource("Resource_h3peq"),
+1: SubResource("Resource_5xgwf"),
+2: SubResource("Resource_oqwmt"),
+3: SubResource("Resource_5vvwx")
+})
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
 [sub_resource type="Resource" id="Resource_4snlu"]

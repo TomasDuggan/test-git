@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bc682ii26r3kd"]
+
+[ext_resource type="Script" uid="uid://q5qt1djfvoxy" path="res://scripts/combat/ui/drawback_picker/skill_drawback_ui.gd" id="1_45kwa"]
+
+[node name="SkillDrawback" type="Control" node_paths=PackedStringArray("_desc")]
+layout_mode = 3
+anchors_preset = 0
+size_flags_vertical = 3
+script = ExtResource("1_45kwa")
+_desc = NodePath("HBoxContainer/Desc")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Desc" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+size_flags_stretch_ratio = 5.0
+text = "DESCrpition asd asfdd afdafdsgsdgsfd"
+autowrap_mode = 3
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "PICK"
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -59,8 +59,12 @@ func can_receive_status_effect(config: StatusEffectConfig) -> bool:
 		final_chance = chance_to_apply
 	else:
 		final_chance = chance_to_apply / (chance_to_apply + resistance)
-
-	return randf() < final_chance
+	
+	var can_apply_status: bool = randf() < final_chance
+	if !can_apply_status:
+		print_rich("[color='red']STATUS EFFECT BLOQUEADO[/color]")
+	
+	return can_apply_status
 
 
 

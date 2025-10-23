@@ -8,6 +8,8 @@ signal turn_started(character: Character)
 signal turn_ended(character: Character)
 signal character_selected(character: Character)
 signal skill_selected(skill_config: SkillConfig)
+signal skill_effect_drawbacks_triggered(drawbacks: Array[SkillEffectConfig])
+signal skill_effect_drawback_selected(drawback: SkillEffectConfig)
 signal roll_pressed()
 signal end_turn_pressed()
 
@@ -26,6 +28,12 @@ func raise_event_character_selected(character: Character) -> void:
 
 func raise_event_skill_selected(skill_config: SkillConfig) -> void:
 	skill_selected.emit(skill_config)
+
+func raise_event_skill_effect_drawbacks_triggered(drawbacks: Array[SkillEffectConfig]) -> void:
+	skill_effect_drawbacks_triggered.emit(drawbacks)
+
+func raise_event_skill_effect_drawback_selected(drawback: SkillEffectConfig) -> void:
+	skill_effect_drawback_selected.emit(drawback)
 
 func raise_event_roll_pressed() -> void:
 	roll_pressed.emit()

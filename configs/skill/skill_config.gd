@@ -9,10 +9,23 @@ class_name SkillConfig
 @export_category("Logic")
 @export var dice_config: DiceConfig
 @export var roll_stat_modifier: StatConfig.StatType
-@export var effect_configs: Array[SkillEffectConfig]
-@export var recoil_configs: Array[SkillEffectConfig]
+@export var outcome_configs: Dictionary[RollInterpreterSystem.RollOutcomeType, SkillOutcomeConfig] = {
+	RollInterpreterSystem.RollOutcomeType.FAIL: null,
+	RollInterpreterSystem.RollOutcomeType.PARTIAL: null,
+	RollInterpreterSystem.RollOutcomeType.SUCCESS: null,
+	RollInterpreterSystem.RollOutcomeType.CRITICAL_SUCCESS: null,
+}
+
+
+func get_outcome_config_by_type(type: RollInterpreterSystem.RollOutcomeType) -> SkillOutcomeConfig:
+	return outcome_configs.get(type, null)
 
 func requires_target_selection() -> bool:
-	return effect_configs.any(func(e: SkillEffectConfig): 
-		return e.target_scope == SkillExecutionSystem.TargetScope.CUSTOM_SELECTION
+	var flattened_effects: Array[SkillEffectConfig] = []
+	
+	for outcome_config: SkillOutcomeConfig in outcome_configs.values():
+		flattened_effects.append_array(outcome_config.effects)
+	
+	return flattened_effects.any(func(e: SkillEffectConfig): 
+		return e.target_scope == SkillEffectConfig.TargetScope.CUSTOM_SELECTION
 	)

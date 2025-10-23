@@ -1,13 +1,12 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=15 format=3 uid="uid://u30vo2vcqnyx"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=13 format=3 uid="uid://u30vo2vcqnyx"]
 
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_mt1ex"]
 [ext_resource type="Script" uid="uid://cdmslc764huak" path="res://configs/character/attributes/character_attributes_config.gd" id="1_y0q5b"]
 [ext_resource type="Script" uid="uid://dbqrpeaio4s7w" path="res://configs/skill/skill_config.gd" id="2_fodxj"]
 [ext_resource type="Script" uid="uid://be0kq8uqpd7ur" path="res://configs/character/resistances/chracter_resistances_config.gd" id="2_mry6s"]
-[ext_resource type="Script" uid="uid://bto7l8ty1bdpr" path="res://configs/skill/effects/skill_effect_config.gd" id="3_bh3vp"]
 [ext_resource type="Resource" uid="uid://cofce78tosmjp" path="res://configs/dice/instances/dice_config_2d8.tres" id="3_y0q5b"]
-[ext_resource type="Script" uid="uid://s8a5f26n6h3f" path="res://configs/skill/effects/heal_skill_effect_config.gd" id="4_mt1ex"]
 [ext_resource type="Texture2D" uid="uid://cc8o4dmkn8o5c" path="res://art/skills/map.png" id="5_fodxj"]
+[ext_resource type="Script" uid="uid://cxt6d23n3m2rl" path="res://configs/skill/skill_outcome_config.gd" id="7_webq0"]
 [ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="10_sax7m"]
 
 [sub_resource type="Resource" id="Resource_mry6s"]
@@ -18,18 +17,12 @@ metadata/_custom_type_script = "uid://cdmslc764huak"
 script = ExtResource("2_mry6s")
 metadata/_custom_type_script = "uid://be0kq8uqpd7ur"
 
-[sub_resource type="Resource" id="Resource_fodxj"]
-script = ExtResource("4_mt1ex")
-metadata/_custom_type_script = "uid://s8a5f26n6h3f"
-
 [sub_resource type="Resource" id="Resource_y0q5b"]
 script = ExtResource("2_fodxj")
 display_name = "Heal"
 desc = "Heals a target"
 icon = ExtResource("5_fodxj")
 dice_config = ExtResource("3_y0q5b")
-effect_configs = Array[ExtResource("3_bh3vp")]([SubResource("Resource_fodxj")])
-amount_of_targets = 1
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
 [sub_resource type="Resource" id="Resource_o4vg2"]

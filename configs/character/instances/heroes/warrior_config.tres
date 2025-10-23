@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterConfig" load_steps=23 format=3 uid="uid://b3a5e33ydueoi"]
+[gd_resource type="Resource" script_class="CharacterConfig" load_steps=31 format=3 uid="uid://b3a5e33ydueoi"]
 
 [ext_resource type="Script" uid="uid://be0kq8uqpd7ur" path="res://configs/character/resistances/chracter_resistances_config.gd" id="1_00up1"]
 [ext_resource type="Script" uid="uid://by3x5xev328bq" path="res://configs/character/character_config.gd" id="1_06126"]
@@ -9,10 +9,10 @@
 [ext_resource type="Texture2D" uid="uid://dw2lfl3bb7h6m" path="res://art/skills/sword.png" id="4_0ehpy"]
 [ext_resource type="Script" uid="uid://chu3wno85ljhm" path="res://configs/skill/effects/damage_skill_effect_config.gd" id="4_qsmnq"]
 [ext_resource type="Script" uid="uid://b4bmjego7lymm" path="res://configs/skill/effects/apply_status_skill_effect_config.gd" id="7_00up1"]
+[ext_resource type="Script" uid="uid://cxt6d23n3m2rl" path="res://configs/skill/skill_outcome_config.gd" id="8_06126"]
 [ext_resource type="Script" uid="uid://c1eyibhmb1bhx" path="res://configs/status_effect/status_effect_config.gd" id="8_ownuh"]
 [ext_resource type="Script" uid="uid://ddow0juot6lv0" path="res://configs/status_effect/bleed_status_effect_config.gd" id="9_00up1"]
 [ext_resource type="Script" uid="uid://uve6uqxfi242" path="res://configs/stats/stats_config.gd" id="9_ownuh"]
-[ext_resource type="Script" uid="uid://cmuev5qcqwhgc" path="res://configs/status_effect/stun_status_effect_config.gd" id="10_ownuh"]
 
 [sub_resource type="Resource" id="Resource_itw0r"]
 script = ExtResource("1_ownuh")
@@ -28,47 +28,101 @@ damage_resistances = Dictionary[int, float]({
 })
 metadata/_custom_type_script = "uid://be0kq8uqpd7ur"
 
-[sub_resource type="Resource" id="Resource_fn4su"]
-script = ExtResource("4_qsmnq")
-damage = 5
-metadata/_custom_type_script = "uid://chu3wno85ljhm"
-
-[sub_resource type="Resource" id="Resource_ownuh"]
-script = ExtResource("9_00up1")
-damage_per_turn = 3
-stacks = 2
-metadata/_custom_type_script = "uid://ddow0juot6lv0"
-
-[sub_resource type="Resource" id="Resource_4v0dk"]
-script = ExtResource("10_ownuh")
-metadata/_custom_type_script = "uid://cmuev5qcqwhgc"
-
-[sub_resource type="Resource" id="Resource_kldn8"]
-script = ExtResource("7_00up1")
-statuses = Array[ExtResource("8_ownuh")]([SubResource("Resource_ownuh"), SubResource("Resource_4v0dk")])
-metadata/_custom_type_script = "uid://b4bmjego7lymm"
-
-[sub_resource type="Resource" id="Resource_wpr6j"]
+[sub_resource type="Resource" id="Resource_qsmnq"]
 script = ExtResource("4_qsmnq")
 damage = 5
 pierce_resistances = true
+tone = 2
 target_scope = 1
 metadata/_custom_type_script = "uid://chu3wno85ljhm"
 
-[sub_resource type="Resource" id="Resource_70ky5"]
+[sub_resource type="Resource" id="Resource_qnl8j"]
+script = ExtResource("9_00up1")
+damage_per_turn = 5
+metadata/_custom_type_script = "uid://ddow0juot6lv0"
+
+[sub_resource type="Resource" id="Resource_v5hgt"]
+script = ExtResource("7_00up1")
+statuses = Array[ExtResource("8_ownuh")]([SubResource("Resource_qnl8j")])
+tone = 2
+target_scope = 1
+metadata/_custom_type_script = "uid://b4bmjego7lymm"
+
+[sub_resource type="Resource" id="Resource_fn4su"]
+script = ExtResource("8_06126")
+effects = Array[ExtResource("3_fn4su")]([SubResource("Resource_qsmnq"), SubResource("Resource_v5hgt")])
+metadata/_custom_type_script = "uid://cxt6d23n3m2rl"
+
+[sub_resource type="Resource" id="Resource_0ehpy"]
+script = ExtResource("4_qsmnq")
+damage = 5
+metadata/_custom_type_script = "uid://chu3wno85ljhm"
+
+[sub_resource type="Resource" id="Resource_vsvju"]
+script = ExtResource("4_qsmnq")
+damage = 3
+pierce_resistances = true
+tone = 2
+target_scope = 1
+metadata/_custom_type_script = "uid://chu3wno85ljhm"
+
+[sub_resource type="Resource" id="Resource_3ph3p"]
+script = ExtResource("9_00up1")
+damage_per_turn = 3
+metadata/_custom_type_script = "uid://ddow0juot6lv0"
+
+[sub_resource type="Resource" id="Resource_krahd"]
+script = ExtResource("7_00up1")
+statuses = Array[ExtResource("8_ownuh")]([SubResource("Resource_3ph3p")])
+tone = 2
+target_scope = 1
+metadata/_custom_type_script = "uid://b4bmjego7lymm"
+
+[sub_resource type="Resource" id="Resource_wpr6j"]
+script = ExtResource("8_06126")
+effects = Array[ExtResource("3_fn4su")]([SubResource("Resource_0ehpy"), SubResource("Resource_vsvju"), SubResource("Resource_krahd")])
+metadata/_custom_type_script = "uid://cxt6d23n3m2rl"
+
+[sub_resource type="Resource" id="Resource_00up1"]
+script = ExtResource("4_qsmnq")
+damage = 10
+metadata/_custom_type_script = "uid://chu3wno85ljhm"
+
+[sub_resource type="Resource" id="Resource_ownuh"]
+script = ExtResource("8_06126")
+effects = Array[ExtResource("3_fn4su")]([SubResource("Resource_00up1")])
+metadata/_custom_type_script = "uid://cxt6d23n3m2rl"
+
+[sub_resource type="Resource" id="Resource_4v0dk"]
+script = ExtResource("4_qsmnq")
+damage = 20
+pierce_resistances = true
+target_scope = 3
+metadata/_custom_type_script = "uid://chu3wno85ljhm"
+
+[sub_resource type="Resource" id="Resource_kldn8"]
+script = ExtResource("8_06126")
+effects = Array[ExtResource("3_fn4su")]([SubResource("Resource_4v0dk")])
+metadata/_custom_type_script = "uid://cxt6d23n3m2rl"
+
+[sub_resource type="Resource" id="Resource_o6cct"]
 script = ExtResource("2_qsmnq")
-display_name = "Slash"
-desc = "Hits single enemy"
+display_name = "H&S"
+desc = "Hit +STR"
 icon = ExtResource("4_0ehpy")
 dice_config = ExtResource("3_bveeg")
-effect_configs = Array[ExtResource("3_fn4su")]([SubResource("Resource_fn4su"), SubResource("Resource_kldn8")])
-recoil_configs = Array[ExtResource("3_fn4su")]([SubResource("Resource_wpr6j")])
+outcome_configs = Dictionary[int, ExtResource("8_06126")]({
+0: SubResource("Resource_fn4su"),
+1: SubResource("Resource_wpr6j"),
+2: SubResource("Resource_ownuh"),
+3: SubResource("Resource_kldn8")
+})
 metadata/_custom_type_script = "uid://dbqrpeaio4s7w"
 
 [sub_resource type="Resource" id="Resource_bveeg"]
 script = ExtResource("9_ownuh")
 all_stats = Dictionary[int, int]({
-0: 10,
+0: 12,
 1: 0,
 2: 0,
 3: 8,
@@ -85,5 +139,5 @@ hp = 100
 stats = SubResource("Resource_bveeg")
 attributes = SubResource("Resource_itw0r")
 resistances = SubResource("Resource_dtr3s")
-skill_configs = Array[ExtResource("2_qsmnq")]([SubResource("Resource_70ky5")])
+skill_configs = Array[ExtResource("2_qsmnq")]([SubResource("Resource_o6cct")])
 metadata/_custom_type_script = "uid://by3x5xev328bq"
