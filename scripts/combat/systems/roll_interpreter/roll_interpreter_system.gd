@@ -20,17 +20,17 @@ const PARTIAL_THRESHOLD := 0.5 # Mas del PARTIAL_THRESHOLD %
 const SUCCESS_THRESHOLD := 0.75 # Mas del SUCCESS_THRESHOLD %
 
 
-static func resolve_outcome(roll_total: int, dice_config: DiceConfig) -> RollOutcomeType:
+static func resolve_outcome(dice_result: DiceResult, dice_config: DiceConfig) -> RollOutcomeType:
 	var max_roll: int = dice_config.amount_of_dice * dice_config.die_size
 	
 	var success_threshold: int = floor(max_roll * SUCCESS_THRESHOLD)
 	var partial_threshold: int = floor(max_roll * PARTIAL_THRESHOLD)
 	
-	if roll_total == max_roll:
+	if dice_result.unmodified_total == max_roll:
 		return RollOutcomeType.CRITICAL_SUCCESS
-	if roll_total >= success_threshold:
+	if dice_result.total >= success_threshold:
 		return RollOutcomeType.SUCCESS
-	if roll_total >= partial_threshold:
+	if dice_result.total >= partial_threshold:
 		return RollOutcomeType.PARTIAL
 	else:
 		return RollOutcomeType.FAIL

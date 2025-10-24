@@ -4,7 +4,6 @@ class_name DrawbacksPicker
 @export_category("Editor Dependencies")
 @export var _drawbacks_container: Container
 
-
 const SKILL_DRAWBACK_SCENE: PackedScene = preload("uid://bc682ii26r3kd")
 
 
@@ -16,8 +15,10 @@ func _on_drawbacks_triggered(drawbacks: Array[SkillEffectConfig]) -> void:
 	for c in _drawbacks_container.get_children():
 		c.queue_free()
 	
+	_create_drawback_list(drawbacks)
 	show()
-	
+
+func _create_drawback_list(drawbacks: Array[SkillEffectConfig]) -> void:
 	for drawback: SkillEffectConfig in drawbacks:
 		var instance: SkillDrawbackUI = SKILL_DRAWBACK_SCENE.instantiate()
 		

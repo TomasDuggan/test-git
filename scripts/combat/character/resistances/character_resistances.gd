@@ -52,7 +52,7 @@ func can_receive_status_effect(config: StatusEffectConfig) -> bool:
 	var chance_to_apply: float = config.chance_to_apply
 	var resistance: float = _status_resistances.get(config.get_category(), 0.0)
 	var final_chance: float
-
+	
 	if chance_to_apply <= 0.0:
 		final_chance = 0.0
 	elif resistance <= 0.0:
@@ -62,7 +62,7 @@ func can_receive_status_effect(config: StatusEffectConfig) -> bool:
 	
 	var can_apply_status: bool = randf() < final_chance
 	if !can_apply_status:
-		print_rich("[color='red']STATUS EFFECT BLOQUEADO[/color]")
+		print_rich("[color='red']%s BLOCKED[/color]" % EnumsHelper.enum_to_string(StatusEffectConfig.StatusType, config.get_type()))
 	
 	return can_apply_status
 

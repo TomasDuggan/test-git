@@ -59,7 +59,7 @@ func _resolve_skill_cast_context() -> SkillCastContext:
 	var skill_context := SkillCastContext.new(_current_character, _current_skill)
 	
 	skill_context.dice_result = DiceSystem.roll(_current_skill.dice_config, _current_skill.roll_stat_modifier, _current_character)
-	skill_context.outcome_type = RollInterpreterSystem.resolve_outcome(skill_context.dice_result.total, _current_skill.dice_config)
+	skill_context.outcome_type = RollInterpreterSystem.resolve_outcome(skill_context.dice_result, _current_skill.dice_config)
 	
 	skill_context.print_roll() # TODO: es debug
 	

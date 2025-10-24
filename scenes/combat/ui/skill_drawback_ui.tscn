@@ -1,33 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://bc682ii26r3kd"]
+[gd_scene load_steps=3 format=3 uid="uid://bc682ii26r3kd"]
 
 [ext_resource type="Script" uid="uid://q5qt1djfvoxy" path="res://scripts/combat/ui/drawback_picker/skill_drawback_ui.gd" id="1_45kwa"]
+[ext_resource type="Texture2D" uid="uid://d2fguhq5ar1yu" path="res://art/menu_backgrounds/tile_0003.png" id="2_iqb2d"]
 
 [node name="SkillDrawback" type="Control" node_paths=PackedStringArray("_desc")]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 3
 anchors_preset = 0
-size_flags_vertical = 3
+offset_right = 200.0
+offset_bottom = 100.0
 script = ExtResource("1_45kwa")
-_desc = NodePath("HBoxContainer/Desc")
+_desc = NodePath("MarginContainer/HBoxContainer/Desc")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="Background" type="NinePatchRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = ExtResource("2_iqb2d")
+patch_margin_left = 10
+patch_margin_top = 9
+patch_margin_right = 8
+patch_margin_bottom = 8
 
-[node name="Desc" type="Label" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Desc" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 size_flags_stretch_ratio = 5.0
-text = "DESCrpition asd asfdd afdafdsgsdgsfd"
+text = "DESCrpition asd asfdd adlgjfsdkjgkjsdfjakdfjlsdkgfjsdkfl"
+vertical_alignment = 1
 autowrap_mode = 3
 
-[node name="Button" type="Button" parent="HBoxContainer"]
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 4
 text = "PICK"
 
-[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="MarginContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

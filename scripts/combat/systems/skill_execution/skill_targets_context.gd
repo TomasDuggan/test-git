@@ -14,5 +14,7 @@ func get_targets_by_faction(caster: Character, is_ally: bool, include_caster := 
 		return c.is_ally_of(caster) == is_ally
 	)
 
+# TODO: Aca me podria colgar del evento de cuando muere un Character y actualizar el array?
+# Porque si muere durante la cadena del efecto va a tirar NPE
 
 #

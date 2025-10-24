@@ -5,15 +5,14 @@ class_name SkillEffectConfig
 Lo que un skill gatilla al activarse
 """
 
-@export_category("Logic")
 @export var tone: SkillEffectTone
 @export var target_scope: TargetScope
 
 @abstract
-func get_effect_type() -> SkillEffectType
+func get_effect_type() -> SkillEffectType # Para hacer el 1 a 1 con el Handler
 
 @abstract
-func get_description() -> String
+func get_description() -> String # Para la UI
 
 func _get_target_scope_text() -> String:
 	match target_scope:
@@ -35,7 +34,7 @@ enum SkillEffectType {
 }
 
 enum TargetScope {
-	CUSTOM_SELECTION, # Para poder seleccionar un target.
+	CUSTOM_SELECTION, # Para poder seleccionar un target especifico.
 	SELF,
 	ALL_ALLIES,
 	ALL_ENEMIES,
@@ -45,5 +44,5 @@ enum TargetScope {
 enum SkillEffectTone {
 	POSITIVE,
 	NEUTRAL,
-	NEGATIVE,
+	NEGATIVE, # Para mostrarlo como drawback
 }
